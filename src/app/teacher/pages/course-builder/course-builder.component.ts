@@ -4,13 +4,14 @@ import {Course} from '../../../models/course';
 import {TeacherCoursesService} from '../../../services/teacher-courses/teacher-courses.service';
 import {switchMap} from 'rxjs/operators';
 
+
 @Component({
     selector: 'app-course-builder',
     templateUrl: './course-builder.component.html',
     styleUrls: ['./course-builder.component.scss']
 })
 export class CourseBuilderComponent implements OnInit {
-
+    showSpinner = true;
     course: Course;
     curID: string;
 
@@ -26,6 +27,7 @@ export class CourseBuilderComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log('this.course_', this.course);
         this.curID = this._activatedRoute.snapshot.paramMap.get('id');
         console.log('this.curID', this.curID);
         this._http.getCourseById(this.curID)
@@ -34,9 +36,11 @@ export class CourseBuilderComponent implements OnInit {
                     this.course = res.message;
                     console.log('RES:', res);
                     console.log('this.course:', this.course);
+                    this.showSpinner = false;
                 },
                 err => {
                     console.log(err);
+                    this.showSpinner = false;
                 }
             );
     }

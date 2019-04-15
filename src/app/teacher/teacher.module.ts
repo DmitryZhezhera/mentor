@@ -9,6 +9,7 @@ import { CourseRegisterComponent } from './pages/course-register/course-register
 import {components} from './components';
 import {SharedModule} from '../shared/shared.module';
 import {MatTabsModule} from '@angular/material';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
     declarations: [TeacherComponent, CreateCourseComponent, CourseBuilderComponent, CourseRegisterComponent],
@@ -17,7 +18,8 @@ import {MatTabsModule} from '@angular/material';
         TeacherRoutingModule,
         FormsModule,
         SharedModule,
-        MatTabsModule
+        MatTabsModule,
+        MatProgressSpinnerModule
     ]
 })
 export class TeacherModule {

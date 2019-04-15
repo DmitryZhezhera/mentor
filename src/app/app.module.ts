@@ -30,7 +30,7 @@ import {MatTabsModule} from '@angular/material';
         FormsModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
-        MatTabsModule
+        MatTabsModule,
     ],
     providers: [AuthService, AuthGuard,
         {

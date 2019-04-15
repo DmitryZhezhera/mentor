@@ -11,6 +11,7 @@ import {TeacherCoursesService} from '../../../services/teacher-courses/teacher-c
 })
 export class TeacherComponent implements OnInit {
     arrMyCourses: Course[] = [];
+    showSpinner = true;
 
     constructor(private _http: TeacherCoursesService) {
     }
@@ -22,9 +23,12 @@ export class TeacherComponent implements OnInit {
                     this.arrMyCourses = res.courses;
                     console.log('RES:', res);
                     console.log('this.arrMyCourses:', this.arrMyCourses);
+                    this.showSpinner = false;
+                    console.log('this.spinner_', this.showSpinner);
                 },
                 err => {
                     console.log(err);
+                    this.showSpinner = false;
                 }
             );
     }

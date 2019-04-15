@@ -1,18 +1,22 @@
 <app-create-course></app-create-course>
 
-<div class="teacher-courses" *ngIf="arrMyCourses.length>0; else noCourses">
-    <h2 class="teacher-courses__title">ВАШИ КУРСЫ:</h2>
-    <ul class="teacher-courses__list">
-        <li class="teacher-courses__list-item" *ngFor="let course of arrMyCourses">
-            <a class="teacher-courses__list-item-link" routerLink="builder/{{course.id}}">
-                <app-course-card [course]="course"></app-course-card>
-            </a>
-        </li>
-    </ul>
+<div class="" *ngIf="showSpinner===false; else spinner">
+    <div class="teacher-courses" *ngIf="arrMyCourses.length>0; else noCourses">
+        <h2 class="teacher-courses__title">ВАШИ КУРСЫ:</h2>
+        <ul class="teacher-courses__list">
+            <li class="teacher-courses__list-item" *ngFor="let course of arrMyCourses">
+                <a class="teacher-courses__list-item-link" routerLink="builder/{{course.id}}">
+                    <app-course-card [course]="course"></app-course-card>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <ng-template #noCourses>
+        <h2 class="teacher-courses__title">ВЫ ЕЩЕ НЕ СОЗДАЛИ НИ ОДНОГО КУРСА</h2>
+    </ng-template>
 </div>
-<ng-template #noCourses>
-    <h2 class="teacher-courses__title">ВЫ ЕЩЕ НЕ СОЗДАЛИ НИ ОДНОГО КУРСА</h2>
+<ng-template #spinner>
+    <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
 </ng-template>
-
 
 

@@ -10,6 +10,8 @@ import {StudentService} from '../../../services/student/student.service';
 export class StudentComponent implements OnInit {
     arrSubscribedCourses: Course[] = [];
     arrTopCourses: Course[] = [];
+    showSpinnerSubscribed = true;
+    showSpinnerTop5 = true;
 
     constructor(private _studentService: StudentService) {
     }
@@ -21,6 +23,7 @@ export class StudentComponent implements OnInit {
                     this.arrSubscribedCourses = res.top;
                     console.log('RES getSubscribedCourses :', res);
                     console.log('this.arrSubscribedCourses:', this.arrSubscribedCourses);
+                    this.showSpinnerSubscribed = false;
                 },
                 err => {
                     console.log(err);
@@ -33,6 +36,7 @@ export class StudentComponent implements OnInit {
                     this.arrTopCourses = res.top;
                     console.log('RES getTop5 :', res);
                     console.log('this.arrTopCourses:', this.arrTopCourses);
+                    this.showSpinnerTop5 = false;
                 },
                 err => {
                     console.log(err);
