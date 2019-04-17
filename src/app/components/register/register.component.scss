@@ -44,5 +44,9 @@ $main-clr: #ff8a05;
       transition: 700ms;
       opacity: 0.7;
     }
+    &:disabled{
+      opacity: 0.7;
+      cursor: auto;
+    }
   }
 }

@@ -28,7 +28,7 @@
             <input formControlName="passwordConfirm" placeholder="Confirm password ">
             <div class="registration-btn-wrap">
                 <button (click)="cancel()" class="registration-btn">Cancel</button>
-                <button (click)="registerUser()" class="registration-btn">Submit</button>
+                <button (click)="registerUser()" class="registration-btn" [disabled]="userDataControl.invalid">Submit</button>
             </div>
         </div>
     </div>
