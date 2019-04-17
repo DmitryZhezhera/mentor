@@ -1,22 +1,36 @@
 <div class="registration-wrap">
     <div class="registration">
         <h2 class="registration__title">Registration</h2>
-        <form class="registration__form">
-            FIRST NAME :
-            <input [(ngModel)]="registerUserData.firstName" name="firstName" type="text" required="required">
-            LAST NAME:
-            <input [(ngModel)]="registerUserData.lastName" name="lastName" type="text" required="required">
-            LOGIN:
-            <input [(ngModel)]="registerUserData.login" name="login" type="text" required="required">
-            Email:
-            <input [(ngModel)]="registerUserData.eMail" name="eMail" type="email" required="required">
-            Password
-            <input [(ngModel)]="registerUserData.password" name="password" type="password" required="required">
+
+        <!--<form class="registration__form">-->
+            <!--FIRST NAME :-->
+            <!--<input [(ngModel)]="registerUserData.firstName" name="firstName" type="text" required="required">-->
+            <!--LAST NAME:-->
+            <!--<input [(ngModel)]="registerUserData.lastName" name="lastName" type="text" required="required">-->
+            <!--LOGIN:-->
+            <!--<input [(ngModel)]="registerUserData.login" name="login" type="text" required="required">-->
+            <!--Email:-->
+            <!--<input [(ngModel)]="registerUserData.eMail" name="eMail" type="email" required="required">-->
+            <!--Password-->
+            <!--<input [(ngModel)]="registerUserData.password" name="password" type="password" required="required">-->
+            <!--<div class="registration-btn-wrap">-->
+                <!--<button (click)="cancel()" class="registration-btn">Cancel</button>-->
+                <!--<button (click)="registerUser()" class="registration-btn">Submit</button>-->
+            <!--</div>-->
+        <!--</form>-->
+
+        <div [formGroup]="userDataControl" class="registration__form">
+            <input formControlName="firstName" placeholder="First Name">
+            <input formControlName="lastName" placeholder="Last Name">
+            <input formControlName="login" placeholder="Login">
+            <input formControlName="eMail" placeholder="Email">
+            <input formControlName="password" placeholder="password">
+            <input formControlName="passwordConfirm" placeholder="Confirm password ">
             <div class="registration-btn-wrap">
                 <button (click)="cancel()" class="registration-btn">Cancel</button>
                 <button (click)="registerUser()" class="registration-btn">Submit</button>
             </div>
-        </form>
+        </div>
     </div>
 
 </div>

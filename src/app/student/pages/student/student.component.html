@@ -1,10 +1,10 @@
 <div class="student">
-    <h2 class="teacher-courses__title">ВАШИ КУРСЫ:</h2>
+    <h2 class="top-courses__title">ВАШИ КУРСЫ:</h2>
     <div class="" *ngIf="showSpinnerSubscribed===false; else spinner">
-        <div class="teacher-courses" *ngIf="arrSubscribedCourses.length>0; else noCourses">
-            <ul class="teacher-courses__list">
-                <li class="teacher-courses__list-item" *ngFor="let course of arrSubscribedCourses">
-                    <a class="teacher-courses__list-item-link" routerLink="builder/{{course.id}}">
+        <div class="top-courses" *ngIf="arrSubscribedCourses.length>0; else noCourses">
+            <ul class="top-courses__list">
+                <li class="top-courses__list-item" *ngFor="let course of arrSubscribedCourses">
+                    <a class="top-courses__list-item-link" routerLink="preview/{{course.id}}">
                         <app-course-card [course]="course"></app-course-card>
                     </a>
                 </li>

@@ -17,10 +17,10 @@ export class StudentComponent implements OnInit {
     }
 
     ngOnInit() {
-        this._studentService.getSubscribedCourses()
+        this._studentService.studentCourses()
             .subscribe(
                 res => {
-                    this.arrSubscribedCourses = res.top;
+                    this.arrSubscribedCourses = res.studentCourses;
                     console.log('RES getSubscribedCourses :', res);
                     console.log('this.arrSubscribedCourses:', this.arrSubscribedCourses);
                     this.showSpinnerSubscribed = false;
