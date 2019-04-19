@@ -14,12 +14,11 @@ export class CourseBuilderComponent implements OnInit {
     showSpinner = true;
     course: Course;
     curID: string;
+    students: string[] = null;
 
-    public imagePath;
+    // public imagePath;
     imgURL: any;
     public message: string;
-
-    cardImgFile: File = null;
 
     constructor(private _http: TeacherCoursesService,
                 private _activatedRoute: ActivatedRoute) {
@@ -43,13 +42,26 @@ export class CourseBuilderComponent implements OnInit {
                     this.showSpinner = false;
                 }
             );
+        this._http.getCourseStudents(this.curID)
+            .subscribe(
+                res => {
+                    this.students = res;
+                    console.log('RES:', res);
+                    console.log('this.students:', this.students);
+                    // this.showSpinner = false;
+                },
+                err => {
+                    console.log(err);
+                    // this.showSpinner = false;
+                }
+            );
     }
 
     // onFileSelected(event) {
     //     console.log(event);
     //     this.cardImgFile = <File> event.target.file[0];
     // }
-    preview(files) {
+    onChangePreview(files) {
         if (files.length === 0) {
             return;
         }
@@ -61,11 +73,15 @@ export class CourseBuilderComponent implements OnInit {
         }
 
         const reader = new FileReader();
-        this.imagePath = files;
+        // this.imagePath = files;
         reader.readAsDataURL(files[0]);
         reader.onload = (_event) => {
             this.imgURL = reader.result;
+            // this.course.thumbnailImgFile = files[0];
+            this.course.thumbnailImgFile = reader.result;
         };
+        console.log(this.course);
+        console.log(this.imgURL);
     }
 
     updateCourse() {

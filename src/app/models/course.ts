@@ -1,7 +1,8 @@
 export class Course {
     name: string;
     id: string;
-    imgUrl: string;
+    thumbnailImgUrl: string;
+    thumbnailImgFile: any;
     teacher: string;
     ratingStar: number;
     ratingVotes: number;

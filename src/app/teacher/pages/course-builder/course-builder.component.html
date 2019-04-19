@@ -23,7 +23,7 @@
                 <p>CARD PREVIEW IMAGE:</p>
                 <span style="color:red;" *ngIf="message">{{message}}</span>
                 <img [src]="imgURL" height="200" *ngIf="imgURL">
-                <input #file type="file" accept='image/*' (change)="preview(file.files)"/>
+                <input #previewImg type="file" accept='image/*' (change)="onChangePreview(previewImg.files)"/>
 
             </mat-tab>
         </mat-tab-group>
