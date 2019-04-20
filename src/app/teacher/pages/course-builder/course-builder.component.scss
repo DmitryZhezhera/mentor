@@ -37,6 +37,19 @@
     padding: 10px;
     border: 1px solid grey;
   }
+
+  &__students{
+    list-style: none;
+    padding: 0;
+  }
+
+  &__student{
+    color: gray;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #F8F8F8;
+    border-bottom: 1px solid lightgray;
+  }
 }
 
 mat-progress-spinner{

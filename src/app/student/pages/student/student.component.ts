@@ -17,7 +17,7 @@ export class StudentComponent implements OnInit {
     }
 
     ngOnInit() {
-        this._studentService.studentCourses()
+        this._studentService.getCoursesByStudent()
             .subscribe(
                 res => {
                     this.arrSubscribedCourses = res.studentCourses;

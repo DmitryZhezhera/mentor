@@ -12,8 +12,8 @@ export class StudentService {
 
     }
 
-    studentCourses() {
-        return this._http.get<any>(`${apiUrl}/studentCourses`);
+    getCoursesByStudent() {
+        return this._http.get<any>(`${apiUrl}/coursesByStudent`);
     }
 
     getTop5() {

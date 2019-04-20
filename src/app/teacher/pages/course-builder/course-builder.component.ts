@@ -14,7 +14,9 @@ export class CourseBuilderComponent implements OnInit {
     showSpinner = true;
     course: Course;
     curID: string;
-    students: string[] = null;
+
+    students: Object[] = null;
+    showStudentsSpinner = true;
 
     // public imagePath;
     imgURL: any;
@@ -42,17 +44,17 @@ export class CourseBuilderComponent implements OnInit {
                     this.showSpinner = false;
                 }
             );
-        this._http.getCourseStudents(this.curID)
+        this._http.getStudentsByCourse(this.curID)
             .subscribe(
                 res => {
-                    this.students = res;
+                    this.students = res.usersId;
                     console.log('RES:', res);
                     console.log('this.students:', this.students);
-                    // this.showSpinner = false;
+                    this.showStudentsSpinner = false;
                 },
                 err => {
                     console.log(err);
-                    // this.showSpinner = false;
+                    this.showStudentsSpinner = false;
                 }
             );
     }

@@ -40,8 +40,8 @@ export class TeacherCoursesService {
         return this._http.post<any>(url, course);
     }
 
-    getCourseStudents(ID: string) {
-        return this._http.get<any>(`${apiUrl}/studentCourses/${ID}`);
+    getStudentsByCourse(ID_COURSE: string) {
+        return this._http.get<any>(`${apiUrl}/studentsByCourse/${ID_COURSE}`);
     }
 
 }

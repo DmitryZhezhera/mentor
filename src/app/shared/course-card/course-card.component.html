@@ -1,6 +1,6 @@
 <div class="course-card__content">
     <div class="course-card__head">
-        <img [src]="course.imgUrl" alt="preview">
+        <img [src]="course.thumbnailImgUrl" alt="preview">
     </div>
     <div class="course-card__main">
         <p>id_{{course.id}}</p>
@@ -27,7 +27,7 @@
         <p>{{course.description}}</p>
 
         <div class="course-card-modal__foot">
-            <button (click)="onSubscribe">Subscribe</button>
+            <button (click)="onSubscribe()">Subscribe</button>
         </div>
     </div>
 </div>

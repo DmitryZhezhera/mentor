@@ -8,7 +8,19 @@
         <h2 class="course-builder__title">{{course.name}}</h2>
 
         <mat-tab-group>
-            <mat-tab label="REPORTS"></mat-tab>
+            <mat-tab label="STUDENTS">
+                <div *ngIf="!showStudentsSpinner ;  else spinner">
+                    <ul *ngIf="students.length>0; else noStudents" class="course-builder__students">
+                        <li *ngFor="let student of students; index as i" class="course-builder__student">
+                            <span>{{i + 1 +'. ' + student.firstName + ' ' + student.lastName}}</span>
+                        </li>
+                    </ul>
+                    <ng-template #noStudents>
+                        <p>YOU HAVE NO STUDENTS YET.</p>
+                    </ng-template>
+
+                </div>
+            </mat-tab>
             <mat-tab label="CONTENT">Content OF THE COURSE</mat-tab>
             <mat-tab label="SETTINGS">
                 <p>COURSE NAME:</p>
