@@ -1,12 +1,19 @@
 <header>
   <div class="content">
-    <a routerLink="home"><h1><img src="./assets/img/logo.png" alt="logo"></h1></a>
+    <a routerLink="home"><h1>mentor online</h1></a>
 
     <div class="auth">
-      <a class="auth-btn" routerLink="student" routerLinkActive="active">Student</a>
-      <a class="auth-btn" routerLink="teacher" routerLinkActive="active">Teacher</a>
-      <a class="auth-btn" routerLink="login" routerLinkActive="active">Login</a>
-      <a class="auth-btn" routerLink="register" routerLinkActive="active">Register</a>
+      <div *ngIf="!(user$ | async).login; else userMenu">
+        <a class="auth-btn" routerLink="login" routerLinkActive="active">Login</a>
+        <a class="auth-btn" routerLink="register" routerLinkActive="active">Register</a>
+      </div>
+      <ng-template #userMenu>
+        <div class="">
+          <a class="auth-btn" routerLink="student" routerLinkActive="active">Student</a>
+          <a class="auth-btn" routerLink="teacher" routerLinkActive="active">Teacher</a>
+          <span> Hello {{(user$ | async).firstName}}</span>
+        </div>
+      </ng-template>
     </div>
   </div>
 </header>
