@@ -3,7 +3,7 @@
     <a routerLink="home"><h1>mentor online</h1></a>
 
     <div class="auth">
-      <div *ngIf="!(user$ | async).login; else userMenu">
+      <div *ngIf="!(store$ | async).user.login; else userMenu">
         <a class="auth-btn" routerLink="login" routerLinkActive="active">Login</a>
         <a class="auth-btn" routerLink="register" routerLinkActive="active">Register</a>
       </div>
@@ -11,7 +11,7 @@
         <div class="">
           <a class="auth-btn" routerLink="student" routerLinkActive="active">Student</a>
           <a class="auth-btn" routerLink="teacher" routerLinkActive="active">Teacher</a>
-          <span> Hello {{(user$ | async).firstName}}</span>
+          <span> Hello {{(store$ | async).user.firstName}}</span>
           <button class="auth-btn" (click)="logOut()">Log Out</button>
         </div>
       </ng-template>

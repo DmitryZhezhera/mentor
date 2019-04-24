@@ -2,13 +2,13 @@
     <div class="">
         <a class="course__btn-back" routerLink="/student"><</a>
     </div>
-    <h2 class="course__title">{{course.name}}</h2>
-    <p class="course__teacher">teacher: <span class="course__teacher-name">{{course.teacher}}</span></p>
-    <p class="course__description">{{course.description}}</p>
+    <h2 class="course__title">{{course?.name}}</h2>
+    <p class="course__teacher">teacher: <span class="course__teacher-name">{{course?.teacher}}</span></p>
+    <p class="course__description">{{course?.description}}</p>
     <!--<input class="course-builder__name" [(ngModel)]="course.name" name="name" type="text" required="required">-->
     <!--<textarea class="course-builder__description" [(ngModel)]="course.description" placeholder="PLEASE WRITE COURSE DESCRIPTION"></textarea>-->
     <button (click)="onSubscribe()">SUBSCRIBE</button>
-    <ng-container *ngIf="course.arrVideoLinks.length>0">
+    <ng-container *ngIf="course?.arrVideoLinks.length">
         <h2 class="course__title">Lesson: {{currentLesson.name}}</h2>
         <div class="course__video-wrap">
 

@@ -16,6 +16,7 @@ import {AuthGuard} from './auth.guard';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material';
 import {reducers} from './store/reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
     declarations: [
@@ -34,7 +35,8 @@ import {reducers} from './store/reducers';
         ReactiveFormsModule,
         BrowserAnimationsModule,
         MatTabsModule,
-        StoreModule.forRoot(reducers)
+        StoreModule.forRoot(reducers),
+        StoreDevtoolsModule.instrument()
     ],
     providers: [AuthService, AuthGuard,
         {

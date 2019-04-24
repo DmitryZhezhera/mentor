@@ -1,40 +1,37 @@
 import * as AuthActions from '../actions/auth.actions';
-import {User} from '../../models/user';
+import {AuthState} from '../../models/authState';
 
-const initialState: User = {
-    // user: User = {
-    //     firstName: 'Guest',
-    //     lastName: '',
-    //     loggedIn: false
-    // }
-
-    // user: {
-    //     firstName: 'Guest',
-    //     lastName: '',
-    //     loggedIn: false
-    // }
-    firstName: 'Guest',
-    lastName: '',
-    login: false
+const initialState: AuthState = {
+    user: {
+        firstName: 'Guest',
+        lastName: '',
+        login: false
+    }
 };
 
-export function authReducer(state = initialState, action: AuthActions.AuthActions): User {
+
+export function authReducer(state = initialState, action: AuthActions.AuthActions): AuthState {
     switch (action.type) {
         case AuthActions.ACTION_LOGIN: {
-            const user: User = action.payload;
+            // const user: User = action.payload;
+            console.log(`ACTION_LOGIN payload_ ${action.payload}`);
             return {
                 ...state,
-                login: true,
-                firstName: user.firstName,
-                lastName: user.lastName,
+                user: {
+                    login: true,
+                    firstName: action.payload.firstName,
+                    lastName: action.payload.lastName,
+                }
             };
         }
         case AuthActions.ACTION_LOGOUT:
             return {
                 ...state,
-                firstName: 'Guest',
-                lastName: '',
-                login: false
+                user: {
+                    firstName: 'Guest',
+                    lastName: '',
+                    login: false
+                }
             };
         default :
             return state;

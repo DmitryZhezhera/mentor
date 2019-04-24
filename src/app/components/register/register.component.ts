@@ -3,21 +3,12 @@ import {AuthService} from '../../services/auth/auth.service';
 import {Router} from '@angular/router';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
-
-// function passwordMatcher(c: AbstractControl) {
-//     return c.get('password').value === c.get('confirm').value
-//         ? null : {'nomatch': true};
-// }
-
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
-    // registerUserData = {};
-
     userDataControl: FormGroup;
 
     constructor(private _auth: AuthService,
@@ -30,20 +21,19 @@ export class RegisterComponent implements OnInit {
             eMail: ['', [Validators.required, Validators.email]],
             password: ['', Validators.required],
             passwordConfirm: ['', Validators.required]
+        }, {
+            validators: (f) => {
+                console.log(f);
+                if (f.value.password !== f.value.passwordConfirm) {
+                    return {'notEqual': true};
+                }
+                return null;
+            }
         });
 
     }
 
     ngOnInit() {
-        // this.userDataControl = new FormGroup({
-        //     firstName: new FormControl('', Validators.required),
-        //     lastName: new FormControl('', Validators.required),
-        //     login: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]),
-        //     eMail: new FormControl('', [Validators.required, Validators.email]),
-        //     password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
-        //     passwordConfirm: new FormControl('', [Validators.required])
-        // });
-
         this.userDataControl.valueChanges.subscribe(status => {
             console.log(status);
         });

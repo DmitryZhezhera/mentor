@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
                     console.log(res);
                     localStorage.setItem('token', res.token);
                     this.user.firstName = res.userName.firstName;
-                    // console.log('this.user_', this.user);
+                    this.user.lastName = res.userName.lastName;
+                    console.log('loginUser this.user_', this.user);
                     this._store.dispatch(new authActions.AuthLogIn(this.user));
                     this._router.navigate(['student']);
                 },

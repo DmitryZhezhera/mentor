@@ -17,7 +17,8 @@ const routes: Routes = [
     {
         path: 'student',
         loadChildren: './student/student.module#StudentModule',
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        resolve: {}
     },
     {
         path: 'teacher',

@@ -13,7 +13,7 @@ import {VIDEO} from '../../models/video';
 export class CoursePreviewComponent implements OnInit {
     course: Course;
     curID: string;
-    currentLesson: VIDEO = {link: '', name: ''};
+    currentLesson?: VIDEO;
 
     // TODO ASK ABOUT DECLARATION OF NEW VARIABLE
 
