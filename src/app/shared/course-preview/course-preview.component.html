@@ -1,11 +1,14 @@
 <div class="course">
-  <div class="">
-    <a class="course__btn-back" routerLink="/student"><</a>
-  </div>
-  <h2 class="course__title">{{course.name}}</h2>
-  <p class="course__teacher">teacher: <span class="course__teacher-name">{{course.teacher}}</span></p>
-  <p class="course__description">{{course.description}}</p>
-  <!--<input class="course-builder__name" [(ngModel)]="course.name" name="name" type="text" required="required">-->
-  <!--<textarea class="course-builder__description" [(ngModel)]="course.description" placeholder="PLEASE WRITE COURSE DESCRIPTION"></textarea>-->
-  <button (click)="onSubscribe()">SUBSCRIBE</button>
+    <div class="">
+        <a class="course__btn-back" routerLink="/student"><</a>
+    </div>
+    <h2 class="course__title">{{course.name}}</h2>
+    <p class="course__teacher">teacher: <span class="course__teacher-name">{{course.teacher}}</span></p>
+    <p class="course__description">{{course.description}}</p>
+    <!--<input class="course-builder__name" [(ngModel)]="course.name" name="name" type="text" required="required">-->
+    <!--<textarea class="course-builder__description" [(ngModel)]="course.description" placeholder="PLEASE WRITE COURSE DESCRIPTION"></textarea>-->
+    <button (click)="onSubscribe()">SUBSCRIBE</button>
+    <div class="course__video-wrap">
+        <iframe class="course__video" src="https://www.youtube.com/embed/Cyt0ViDtJ_w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
 </div>

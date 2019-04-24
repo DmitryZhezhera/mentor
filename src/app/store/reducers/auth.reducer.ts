@@ -15,18 +15,20 @@ const initialState: User = {
     // }
     firstName: 'Guest',
     lastName: '',
-    login: true
+    login: false
 };
 
 export function authReducer(state = initialState, action: AuthActions.AuthActions): User {
     switch (action.type) {
-        case AuthActions.ACTION_LOGIN:
+        case AuthActions.ACTION_LOGIN: {
+            const user: User = action.payload;
             return {
                 ...state,
                 login: true,
-                firstName: 'Dmitriy',
-                lastName: 'Zhezhera',
+                firstName: user.firstName,
+                lastName: user.lastName,
             };
+        }
         case AuthActions.ACTION_LOGOUT:
             return {
                 ...state,

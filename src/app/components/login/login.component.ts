@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth/auth.service';
 import {Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import * as authActions from '../../store/actions/auth.actions';
+
+import {User} from '../../models/user';
 
 @Component({
     selector: 'app-login',
@@ -10,9 +14,11 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
     loginUserData = {};
+    user: User = {firstName: 'guest', lastName: 'guest', login: false};
 
     constructor(private _auth: AuthService,
-                private _router: Router) {
+                private _router: Router,
+                private _store: Store<User>) {
     }
 
     ngOnInit() {
@@ -29,6 +35,9 @@ export class LoginComponent implements OnInit {
                 res => {
                     console.log(res);
                     localStorage.setItem('token', res.token);
+                    this.user.firstName = res.userName.firstName;
+                    // console.log('this.user_', this.user);
+                    this._store.dispatch(new authActions.AuthLogIn(this.user));
                     this._router.navigate(['student']);
                 },
                 err => console.log(err)

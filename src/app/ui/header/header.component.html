@@ -12,6 +12,7 @@
           <a class="auth-btn" routerLink="student" routerLinkActive="active">Student</a>
           <a class="auth-btn" routerLink="teacher" routerLinkActive="active">Teacher</a>
           <span> Hello {{(user$ | async).firstName}}</span>
+          <button class="auth-btn" (click)="logOut()">Log Out</button>
         </div>
       </ng-template>
     </div>
