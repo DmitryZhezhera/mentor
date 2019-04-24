@@ -11,7 +11,8 @@ export const COURSES: Course[] = [
         ratingVotes: 125,
         price: 200,
         priceDiscount: 0,
-        description: 'my awesome course 1'
+        description: 'my awesome course 1',
+        arrVideoLinks: []
     },
     {
         id: '2',
@@ -23,7 +24,8 @@ export const COURSES: Course[] = [
         ratingVotes: 150,
         price: 199,
         priceDiscount: 180,
-        description: 'my awesome course 2'
+        description: 'my awesome course 2',
+        arrVideoLinks: []
     },
     {
         id: '3',
@@ -35,6 +37,7 @@ export const COURSES: Course[] = [
         ratingVotes: 151,
         price: 200,
         priceDiscount: 190,
-        description: 'my awesome course 3'
+        description: 'my awesome course 3',
+        arrVideoLinks: []
     },
 ];

@@ -1,3 +1,5 @@
+import {VIDEO} from './video';
+
 export class Course {
     name: string;
     id: string;
@@ -9,4 +11,5 @@ export class Course {
     price: number;
     priceDiscount: number;
     description: string;
+    arrVideoLinks: VIDEO[];
 }

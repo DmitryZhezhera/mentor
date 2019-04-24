@@ -44,4 +44,11 @@
     width: 100%;
     height: 100%;
   }
+
+  &__video-list-item{
+    cursor: pointer;
+    &:hover{
+      color: black;
+    }
+  }
 }

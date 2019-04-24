@@ -8,7 +8,19 @@
     <!--<input class="course-builder__name" [(ngModel)]="course.name" name="name" type="text" required="required">-->
     <!--<textarea class="course-builder__description" [(ngModel)]="course.description" placeholder="PLEASE WRITE COURSE DESCRIPTION"></textarea>-->
     <button (click)="onSubscribe()">SUBSCRIBE</button>
-    <div class="course__video-wrap">
-        <iframe class="course__video" src="https://www.youtube.com/embed/Cyt0ViDtJ_w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
+    <ng-container *ngIf="course.arrVideoLinks.length>0">
+        <h2 class="course__title">Lesson: {{currentLesson.name}}</h2>
+        <div class="course__video-wrap">
+
+            <iframe class="course__video" src="https://www.youtube.com/embed/Cyt0ViDtJ_w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <!--<iframe class="course__video" [attr.src]="currentLesson.link" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+        </div>
+        <h2 class="course__title">Lessons:</h2>
+        <ol>
+            <li class="course__video-list-item" *ngFor="let video of course.arrVideoLinks">
+                {{video.name}}
+            </li>
+        </ol>
+    </ng-container>
+
 </div>
