@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth/auth.service';
 import {Router} from '@angular/router';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
     selector: 'app-register',
@@ -17,29 +17,33 @@ export class RegisterComponent implements OnInit {
         this.userDataControl = this._formBuilder.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
-            login: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
+            login: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
             eMail: ['', [Validators.required, Validators.email]],
             password: ['', Validators.required],
             passwordConfirm: ['', Validators.required]
         }, {
             validators: (f) => {
-                console.log(f);
+                // console.log(f);
                 if (f.value.password !== f.value.passwordConfirm) {
-                    return {'notEqual': true};
+                    return {'mustMatch': true};
                 }
                 return null;
             }
         });
-
     }
 
     ngOnInit() {
-        this.userDataControl.valueChanges.subscribe(status => {
-            console.log(status);
-        });
-        this.userDataControl.statusChanges.subscribe(status => {
-            console.log(status);
-        });
+        // this.userDataControl.valueChanges.subscribe(status => {
+        //     console.log(status);
+        // });
+        // this.userDataControl.statusChanges.subscribe(status => {
+        //     console.log(status);
+        // });
+    }
+
+    get controls() {
+        // console.log('f:', this.userDataControl.controls);
+        return this.userDataControl.controls;
     }
 
     cancel() {

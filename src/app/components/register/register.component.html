@@ -1,36 +1,41 @@
 <div class="registration-wrap">
     <div class="registration">
         <h2 class="registration__title">Registration</h2>
-
-        <!--<form class="registration__form">-->
-            <!--FIRST NAME :-->
-            <!--<input [(ngModel)]="registerUserData.firstName" name="firstName" type="text" required="required">-->
-            <!--LAST NAME:-->
-            <!--<input [(ngModel)]="registerUserData.lastName" name="lastName" type="text" required="required">-->
-            <!--LOGIN:-->
-            <!--<input [(ngModel)]="registerUserData.login" name="login" type="text" required="required">-->
-            <!--Email:-->
-            <!--<input [(ngModel)]="registerUserData.eMail" name="eMail" type="email" required="required">-->
-            <!--Password-->
-            <!--<input [(ngModel)]="registerUserData.password" name="password" type="password" required="required">-->
-            <!--<div class="registration-btn-wrap">-->
-                <!--<button (click)="cancel()" class="registration-btn">Cancel</button>-->
-                <!--<button (click)="registerUser()" class="registration-btn">Submit</button>-->
-            <!--</div>-->
-        <!--</form>-->
-
         <div [formGroup]="userDataControl" class="registration__form">
-            <input formControlName="firstName" placeholder="First Name">
-            <input formControlName="lastName" placeholder="Last Name">
-            <input formControlName="login" placeholder="Login">
-            <input formControlName="eMail" placeholder="Email">
-            <input formControlName="password" placeholder="password">
-            <input formControlName="passwordConfirm" placeholder="Confirm password ">
+            <label>
+                <span class="registration__form-text">First Name *</span>
+                <input type="text" formControlName="firstName">
+            </label>
+            <label>
+                <span class="registration__form-text">Last Name *</span>
+                <input type="text" formControlName="lastName">
+            </label>
+            <label>
+                <span class="registration__form-text">Login *</span>
+                <input type="text" formControlName="login">
+            </label>
+            <div class="registration__form-error" *ngIf="controls.login.errors &&  controls.login.errors.minlength">Login must be at least 4 characters</div>
+
+            <label>
+                <span class="registration__form-text">Email *</span>
+                <input type="email" formControlName="eMail">
+            </label>
+            <label>
+                <span class="registration__form-text">Password *</span>
+                <input type="password" formControlName="password">
+            </label>
+
+            <label>
+                <span class="registration__form-text">Confirm password *</span>
+                <input type="password" formControlName="passwordConfirm">
+            </label>
+            <div class="registration__form-error" *ngIf="userDataControl.errors && userDataControl.errors.mustMatch">Passwords must match</div>
+
             <div class="registration-btn-wrap">
                 <button (click)="cancel()" class="registration-btn">Cancel</button>
                 <button (click)="registerUser()" class="registration-btn" [disabled]="userDataControl.invalid">Submit</button>
             </div>
+            <p class="registration__form-comment">* required fields</p>
         </div>
     </div>
-
 </div>
