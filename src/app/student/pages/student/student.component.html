@@ -4,9 +4,7 @@
         <div class="top-courses" *ngIf="arrSubscribedCourses.length>0; else noCourses">
             <ul class="top-courses__list">
                 <li class="top-courses__list-item" *ngFor="let course of arrSubscribedCourses">
-                    <a class="top-courses__list-item-link" routerLink="preview/{{course.id}}">
-                        <app-course-card [course]="course"></app-course-card>
-                    </a>
+                    <app-course-card [course]="course" [link]="('preview/'+course.id)"></app-course-card>
                 </li>
             </ul>
         </div>
@@ -20,9 +18,7 @@
         <div class="top-courses" *ngIf="arrTopCourses.length>0">
             <ul class="top-courses__list">
                 <li class="top-courses__list-item" *ngFor="let course of arrTopCourses">
-                    <a class="top-courses__list-item-link" routerLink="preview/{{course.id}}">
-                        <app-course-card [course]="course"></app-course-card>
-                    </a>
+                    <app-course-card [course]="course" [link]="('preview/'+course.id)"></app-course-card>
                 </li>
             </ul>
         </div>

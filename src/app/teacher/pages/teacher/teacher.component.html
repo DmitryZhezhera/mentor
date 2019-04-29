@@ -5,9 +5,7 @@
         <h2 class="teacher-courses__title">ВАШИ КУРСЫ:</h2>
         <ul class="teacher-courses__list">
             <li class="teacher-courses__list-item" *ngFor="let course of arrMyCourses">
-                <a class="teacher-courses__list-item-link" routerLink="builder/{{course.id}}">
-                    <app-course-card [course]="course"></app-course-card>
-                </a>
+                <app-course-card [course]="course" [link]="('builder/'+course.id)"></app-course-card>
             </li>
         </ul>
     </div>

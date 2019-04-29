@@ -1,26 +1,28 @@
-<div class="course-card__content">
-    <div class="course-card__head">
-        <img [src]="course.thumbnailImgUrl" alt="preview">
-    </div>
-    <div class="course-card__main">
-        <p>id_{{course.id}}</p>
-        <h3 class="course-card__title">{{course.name}}</h3>
-        <p class="course-card__teacher">
-            {{course.teacher}}
-        </p>
-        <p class="course-card__ratings">
-            <span class="course-card__rating-star">{{course.ratingStar}}</span>
-            <span class="course-card__rating-votes">({{course.ratingVotes}})</span>
+<div class="course-card">
+    <a class="course-card__link" routerLink="{{link}}">
+        <div class="course-card__head">
+            <img [src]="course.thumbnailImgUrl" alt="preview">
+        </div>
+        <div class="course-card__main">
+            <p>id_{{course.id}}</p>
+            <h3 class="course-card__title">{{course.name}}</h3>
+            <p class="course-card__teacher">
+                {{course.teacher}}
+            </p>
+            <p class="course-card__ratings">
+                <span class="course-card__rating-star">{{course.ratingStar}}</span>
+                <span class="course-card__rating-votes">({{course.ratingVotes}})</span>
 
-        </p>
-        <p class="course-card__prices" *ngIf="course.priceDiscount>0">
-            <span class="course-card__priceOld">{{course.price}} $</span>
-            <span class="course-card__price">{{course.priceDiscount}} $</span>
-        </p>
-        <p class="course-card__prices" *ngIf="course.priceDiscount==0">
-            <span class="course-card__price">{{course.price}} $</span>
-        </p>
-    </div>
+            </p>
+            <p class="course-card__prices" *ngIf="course.priceDiscount>0">
+                <span class="course-card__priceOld">{{course.price}} $</span>
+                <span class="course-card__price">{{course.priceDiscount}} $</span>
+            </p>
+            <p class="course-card__prices" *ngIf="course.priceDiscount==0">
+                <span class="course-card__price">{{course.price}} $</span>
+            </p>
+        </div>
+    </a>
 
     <div class="course-card-modal">
         <h3 class="course-card__title">{{course.name}}</h3>

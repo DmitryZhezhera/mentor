@@ -7,6 +7,7 @@ import {Course} from '../../models/course';
     styleUrls: ['./course-card.component.scss']
 })
 export class CourseCardComponent implements OnInit {
+    @Input() link: string;
 
     @Input() course: Course;
 
