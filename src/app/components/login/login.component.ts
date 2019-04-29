@@ -9,11 +9,11 @@ import {User} from '../../models/user';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+    styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
 
-    loginUserData = {};
+    loginUserData = {login: '', password: ''};
     user: User = {firstName: 'guest', lastName: 'guest', login: false};
 
     constructor(private _auth: AuthService,

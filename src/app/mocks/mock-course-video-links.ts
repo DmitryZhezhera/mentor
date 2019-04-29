@@ -1,7 +1,7 @@
 import {VIDEO} from '../models/video';
 
 export const VIDEO_LINKS: VIDEO[] = [
-    {link: 'https://youtu.be/nU1VfYYKMDk', name: 'lesson1'},
-    {link: 'https://youtu.be/s4ABpbxIPFI', name: 'lesson2'},
-    {link: 'https://youtu.be/Vppbdf-qtGU', name: 'lesson3'},
+    {id: 0, link: 'https://www.youtube.com/embed/nU1VfYYKMDk', name: 'lesson1'},
+    {id: 1, link: 'https://www.youtube.com/embed/s4ABpbxIPFI', name: 'lesson2'},
+    {id: 2, link: 'https://www.youtube.com/embed/Vppbdf-qtGU', name: 'lesson3'},
 ];

@@ -4,6 +4,7 @@ import {StudentService} from '../../services/student/student.service';
 import {ActivatedRoute} from '@angular/router';
 import {VIDEO_LINKS} from '../../mocks/mock-course-video-links';
 import {VIDEO} from '../../models/video';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-course-preview',
@@ -14,11 +15,13 @@ export class CoursePreviewComponent implements OnInit {
     course: Course;
     curID: string;
     currentLesson?: VIDEO;
+    trustedLessonUrl;
 
     // TODO ASK ABOUT DECLARATION OF NEW VARIABLE
 
     constructor(private _http: StudentService,
-                private _activatedRoute: ActivatedRoute) {
+                private _activatedRoute: ActivatedRoute,
+                private _sanitizer: DomSanitizer) {
     }
 
     ngOnInit() {
@@ -30,9 +33,11 @@ export class CoursePreviewComponent implements OnInit {
                     this.course = res.message;
                     this.course.arrVideoLinks = VIDEO_LINKS;
                     this.currentLesson = this.course.arrVideoLinks[0];
+                    this.trustedLessonUrl = this._sanitizer.bypassSecurityTrustResourceUrl(this.currentLesson.link);
                     console.log('RES:', res);
                     console.log('this.course:', this.course);
                     console.log('this.currentLesson_', this.currentLesson);
+                    console.log('this.trustedLessonUrl_', this.trustedLessonUrl);
                 },
                 err => {
                     console.log(err);
@@ -54,7 +59,9 @@ export class CoursePreviewComponent implements OnInit {
             );
     }
 
-    onLessonClick() {
-        // this.currentLesson
+    onLessonClick(id) {
+        this.currentLesson = this.course.arrVideoLinks[id];
+        this.trustedLessonUrl = this._sanitizer.bypassSecurityTrustResourceUrl(this.currentLesson.link);
+        // console.log(this.currentLesson);
     }
 }
