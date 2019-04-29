@@ -1,3 +1,16 @@
-<p>
-  guest works!
-</p>
+<div class="container">
+  <h2 class="top-courses__title">ТОП КУРСЫ:</h2>
+  <div class="" *ngIf="showSpinnerTop5===false; else spinner">
+    <div class="top-courses" *ngIf="arrTopCourses.length>0">
+      <ul class="courses__list">
+        <li class="courses__list-item" *ngFor="let course of arrTopCourses">
+          <app-course-card [course]="course" [link]="('preview/'+course.id)"></app-course-card>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<ng-template #spinner>
+  <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
+</ng-template>

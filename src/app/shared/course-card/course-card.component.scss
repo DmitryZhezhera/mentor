@@ -1,26 +1,35 @@
-:host{
-  width: 100%;
+.course-card {
   position: relative;
-  text-align: left;
-  vertical-align: top;
-  height: 290px;
-  box-shadow: 0 0 1px 1px rgba(20, 23, 28, 0.1), 0 3px 1px 0 rgba(20, 23, 28, 0.1);
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
+
   &:hover {
     box-shadow: 0 0 3px 3px rgba(20, 23, 28, 0.2), 0 5px 5px 0 rgba(20, 23, 28, 0.2);
   }
 
-  &:hover{
-    .course-card-modal{
+  &:hover {
+    .course-card-modal {
       visibility: visible;
       transition: 700ms 500ms;
     }
   }
-}
 
-.course-card {
+  &__link{
+    text-decoration: none;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    vertical-align: top;
+    height: 335px;
+    box-shadow: 0 0 1px 1px rgba(20, 23, 28, 0.1), 0 3px 1px 0 rgba(20, 23, 28, 0.1);
+  }
+
+  &__head {
+    height: 120px;
+    background-color: lightgray;
+  }
+
   &__main {
     padding: 20px;
     display: flex;
@@ -35,7 +44,7 @@
     max-height: 42px;
     font-size: 15px;
     color: #29303B;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
   }
 
   &__teacher {
@@ -47,12 +56,12 @@
   }
 
 
-  &__rating-star{
+  &__rating-star {
     font-weight: 600;
     color: #505763;
   }
 
-  &__rating-votes{
+  &__rating-votes {
     ont-size: 12px;
     font-weight: 400;
     color: #686F7A;
@@ -79,8 +88,8 @@
   }
 }
 
-.course-card-modal{
-  visibility:hidden;
+.course-card-modal {
+  visibility: hidden;
   position: absolute;
   transition: 300ms;
   display: flex;

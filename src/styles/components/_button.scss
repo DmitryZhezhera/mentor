@@ -1,0 +1,26 @@
+.my-btn{
+  padding: 10px 30px;
+  background: #ff8a05;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  &:hover{
+    background: #ff7105;
+  }
+}
+
+.btn-back{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 10px 0;
+  padding: 0;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  &:hover{
+    color: white;
+  }
+}

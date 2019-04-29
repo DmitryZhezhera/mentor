@@ -15,17 +15,4 @@ export class StudentService {
     getCoursesByStudent() {
         return this._http.get<any>(`${apiUrl}/coursesByStudent`);
     }
-
-    getTop5() {
-        return this._http.get<any>(`${apiUrl}/top5`);
-    }
-
-    getCoursePreviewById(ID: string) {
-        return this._http.get<any>(`${apiUrl}/courseById/${ID}`);
-    }
-
-    subscribeOnCourse(ID: string) {
-        return this._http.post<any>(`${apiUrl}/addSubscription/${ID}`, '');
-    }
-
 }

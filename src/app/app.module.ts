@@ -14,9 +14,10 @@ import {TokenInterceptorService} from './services/token-interceptor/token-interc
 import {AuthService} from './services/auth/auth.service';
 import {AuthGuard} from './auth.guard';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatTabsModule} from '@angular/material';
+import {MatProgressSpinnerModule, MatTabsModule} from '@angular/material';
 import {reducers} from './store/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
         BrowserAnimationsModule,
         MatTabsModule,
         StoreModule.forRoot(reducers),
-        StoreDevtoolsModule.instrument()
+        StoreDevtoolsModule.instrument(),
+        SharedModule,
+        MatProgressSpinnerModule
     ],
     providers: [AuthService, AuthGuard,
         {

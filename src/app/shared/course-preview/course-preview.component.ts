@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Course} from '../../models/course';
-import {StudentService} from '../../services/student/student.service';
 import {ActivatedRoute} from '@angular/router';
 import {VIDEO_LINKS} from '../../mocks/mock-course-video-links';
 import {VIDEO} from '../../models/video';
 import {DomSanitizer} from '@angular/platform-browser';
+import {GuestService} from '../../services/guest/guest.service';
 
 @Component({
     selector: 'app-course-preview',
@@ -17,9 +17,7 @@ export class CoursePreviewComponent implements OnInit {
     currentLesson?: VIDEO;
     trustedLessonUrl;
 
-    // TODO ASK ABOUT DECLARATION OF NEW VARIABLE
-
-    constructor(private _http: StudentService,
+    constructor(private _http: GuestService,
                 private _activatedRoute: ActivatedRoute,
                 private _sanitizer: DomSanitizer) {
     }

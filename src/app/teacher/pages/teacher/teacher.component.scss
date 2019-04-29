@@ -1,19 +1,6 @@
 .teacher-courses {
   text-align: center;
   padding-top: 50px;
-
-  &__list {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-evenly;
-    list-style: none;
-    padding: 0 0 100px;
-  }
-  &__list-item{
-    flex-basis: 260px;
-    padding: 15px;
-  }
 }
 
 mat-progress-spinner{

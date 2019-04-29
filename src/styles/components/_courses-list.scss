@@ -1,0 +1,17 @@
+.courses {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    list-style: none;
+    padding: 0px;
+  }
+
+  &__list-item {
+    flex-basis: 20%;
+    min-width: 210px;
+    max-width: 300px;
+    padding: 20px 10px;
+  }
+}

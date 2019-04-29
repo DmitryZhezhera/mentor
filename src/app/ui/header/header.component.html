@@ -1,20 +1,22 @@
 <header>
-  <div class="content">
-    <a routerLink="home"><h1>mentor online</h1></a>
-
-    <div class="auth">
-      <div *ngIf="!(store$ | async).user.login; else userMenu">
-        <a class="auth-btn" routerLink="login" routerLinkActive="active">Login</a>
-        <a class="auth-btn" routerLink="register" routerLinkActive="active">Register</a>
-      </div>
-      <ng-template #userMenu>
-        <div class="">
-          <a class="auth-btn" routerLink="student" routerLinkActive="active">Student</a>
-          <a class="auth-btn" routerLink="teacher" routerLinkActive="active">Teacher</a>
-          <span> Hello {{(store$ | async).user.firstName}}</span>
-          <button class="auth-btn" (click)="logOut()">Log Out</button>
+  <div class="container">
+    <div class="content">
+      <a class="logo-link" routerLink="/"><h1 class="logo">mentor <span class="logo-online">online</span></h1></a>
+      <div class="auth">
+        <div *ngIf="!(store$ | async).user.login; else userMenu">
+          <span>Hello guest</span>
+          <a class="auth-btn" routerLink="login" routerLinkActive="active">Login</a>
+          <a class="auth-btn" routerLink="register" routerLinkActive="active">Register</a>
         </div>
-      </ng-template>
+        <ng-template #userMenu>
+          <div class="">
+            <a class="auth-btn" routerLink="student" routerLinkActive="active">Student</a>
+            <a class="auth-btn" routerLink="teacher" routerLinkActive="active">Teacher</a>
+            <span> Hello {{(store$ | async).user.firstName}}</span>
+            <button class="auth-btn" (click)="logOut()">Log Out</button>
+          </div>
+        </ng-template>
+      </div>
     </div>
   </div>
 </header>

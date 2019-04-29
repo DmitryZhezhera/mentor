@@ -5,6 +5,7 @@ import {LoginComponent} from './components/login/login.component';
 import {RegisterComponent} from './components/register/register.component';
 import {AuthGuard} from './auth.guard';
 import {GuestComponent} from './components/guest/guest.component';
+import {CoursePreviewComponent} from './shared/course-preview/course-preview.component';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {path: 'guest', component: GuestComponent},
+    {path: 'guest/preview/:id', component: CoursePreviewComponent},
 ];
 
 @NgModule({

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Course} from '../../../models/course';
 import {StudentService} from '../../../services/student/student.service';
+import {GuestService} from '../../../services/guest/guest.service';
 
 @Component({
     selector: 'app-student',
@@ -13,7 +14,8 @@ export class StudentComponent implements OnInit {
     showSpinnerSubscribed = true;
     showSpinnerTop5 = true;
 
-    constructor(private _studentService: StudentService) {
+    constructor(private _studentService: StudentService,
+                private _guestService: GuestService) {
     }
 
     ngOnInit() {
@@ -30,7 +32,7 @@ export class StudentComponent implements OnInit {
                 }
             );
 
-        this._studentService.getTop5()
+        this._guestService.getTop5()
             .subscribe(
                 res => {
                     this.arrTopCourses = res.top;
