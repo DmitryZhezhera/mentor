@@ -22,6 +22,8 @@ export class CourseBuilderComponent implements OnInit {
     imgURL: any;
     public message: string;
 
+    cardImgFile: File;
+
     constructor(private _http: TeacherCoursesService,
                 private _activatedRoute: ActivatedRoute) {
 
@@ -59,10 +61,6 @@ export class CourseBuilderComponent implements OnInit {
             );
     }
 
-    // onFileSelected(event) {
-    //     console.log(event);
-    //     this.cardImgFile = <File> event.target.file[0];
-    // }
     onChangePreview(files) {
         if (files.length === 0) {
             return;
@@ -91,12 +89,28 @@ export class CourseBuilderComponent implements OnInit {
         this._http.updateCourse(this.course)
             .subscribe(
                 res => {
-                    console.log('RES:', res);
+                    console.log('updateCourse RES:', res);
                 },
                 err => {
                     console.log(err);
                 }
             );
+        this._http.uploadThumbnail(this.cardImgFile)
+            .subscribe(
+                res => {
+                    console.log('uploadThumbnail RES:', res);
+                },
+                err => {
+                    console.log(err);
+                }
+            );
+    }
+
+    // TEST
+    onFileSelected(event) {
+        console.log(event);
+        this.cardImgFile = <File>event.target.files[0];
+        console.log(this.cardImgFile);
     }
 
 }

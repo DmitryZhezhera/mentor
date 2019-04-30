@@ -30,12 +30,14 @@
                 <textarea class="course-builder__description" [(ngModel)]="course.description" placeholder="PLEASE WRITE COURSE DESCRIPTION"></textarea>
 
                 <!--<img [src]="cardImgFile" alt="card image">-->
-                <!--<input type="file" accept='image/*' (change)="onFileSelected($event)">-->
 
                 <p>CARD PREVIEW IMAGE:</p>
-                <span style="color:red;" *ngIf="message">{{message}}</span>
-                <img [src]="imgURL" height="200" *ngIf="imgURL">
-                <input #previewImg type="file" accept='image/*' (change)="onChangePreview(previewImg.files)"/>
+                <!--<span style="color:red;" *ngIf="message">{{message}}</span>-->
+                <!--<img [src]="imgURL" height="200" *ngIf="imgURL">-->
+                <!--<input #previewImg type="file" accept='image/*' (change)="onChangePreview(previewImg.files)"/>-->
+
+                <input type="file" accept='image/*' (change)="onFileSelected($event)">
+
 
             </mat-tab>
         </mat-tab-group>

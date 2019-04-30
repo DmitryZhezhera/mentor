@@ -44,4 +44,12 @@ export class TeacherCoursesService {
         return this._http.get<any>(`${apiUrl}/studentsByCourse/${ID_COURSE}`);
     }
 
+    uploadThumbnail(file: File) {
+        const fd = new FormData();
+        fd.set('file', file);
+        console.log('fd: ', fd);
+        console.log('file: ', file);
+        return this._http.post<any>(`${apiUrl}/photo`, fd);
+    }
+
 }

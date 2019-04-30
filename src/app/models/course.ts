@@ -11,5 +11,5 @@ export class Course {
     price: number;
     priceDiscount: number;
     description: string;
-    arrVideoLinks: VIDEO[];
+    arrVideo: VIDEO[];
 }

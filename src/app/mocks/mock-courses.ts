@@ -12,7 +12,7 @@ export const COURSES: Course[] = [
         price: 200,
         priceDiscount: 0,
         description: 'my awesome course 1',
-        arrVideoLinks: []
+        arrVideo: []
     },
     {
         id: '2',
@@ -25,7 +25,7 @@ export const COURSES: Course[] = [
         price: 199,
         priceDiscount: 180,
         description: 'my awesome course 2',
-        arrVideoLinks: []
+        arrVideo: []
     },
     {
         id: '3',
@@ -38,6 +38,6 @@ export const COURSES: Course[] = [
         price: 200,
         priceDiscount: 190,
         description: 'my awesome course 3',
-        arrVideoLinks: []
+        arrVideo: []
     },
 ];

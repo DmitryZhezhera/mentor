@@ -29,8 +29,8 @@ export class CoursePreviewComponent implements OnInit {
             .subscribe(
                 res => {
                     this.course = res.message;
-                    this.course.arrVideoLinks = VIDEO_LINKS;
-                    this.currentLesson = this.course.arrVideoLinks[0];
+                    this.course.arrVideo = VIDEO_LINKS;
+                    this.currentLesson = this.course.arrVideo[0];
                     this.trustedLessonUrl = this._sanitizer.bypassSecurityTrustResourceUrl(this.currentLesson.link);
                     console.log('RES:', res);
                     console.log('this.course:', this.course);
@@ -58,7 +58,7 @@ export class CoursePreviewComponent implements OnInit {
     }
 
     onLessonClick(id) {
-        this.currentLesson = this.course.arrVideoLinks[id];
+        this.currentLesson = this.course.arrVideo[id];
         this.trustedLessonUrl = this._sanitizer.bypassSecurityTrustResourceUrl(this.currentLesson.link);
         // console.log(this.currentLesson);
     }
