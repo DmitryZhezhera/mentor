@@ -2,7 +2,7 @@
     <a class="course-card__link" routerLink="{{link}}">
         <div class="course-card__body">
             <div class="course-card__head">
-                <img *ngIf="course.thumbnailImgUrl" [src]="course.thumbnailImgUrl" alt="preview">
+                <img class="course-card__head-img" *ngIf="course.thumbnailImgUrl" [src]="course.thumbnailImgUrl" alt="preview">
             </div>
             <div class="course-card__main">
                 <!--<p>id_{{course.id}}</p>-->

@@ -4,7 +4,6 @@ export const COURSES: Course[] = [
     {
         id: '1',
         thumbnailImgUrl: 'url1',
-        thumbnailImgFile: null,
         name: 'course1',
         teacher: 'teacher1',
         ratingStar: 5,
@@ -17,7 +16,6 @@ export const COURSES: Course[] = [
     {
         id: '2',
         thumbnailImgUrl: 'url2',
-        thumbnailImgFile: null,
         name: 'course2',
         teacher: 'teacher1',
         ratingStar: 4,
@@ -30,7 +28,6 @@ export const COURSES: Course[] = [
     {
         id: '3',
         thumbnailImgUrl: 'url3',
-        thumbnailImgFile: null,
         name: 'course3',
         teacher: 'teacher3',
         ratingStar: 4.5,

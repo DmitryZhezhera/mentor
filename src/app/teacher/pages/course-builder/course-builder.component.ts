@@ -78,7 +78,7 @@ export class CourseBuilderComponent implements OnInit {
         reader.onload = (_event) => {
             this.imgURL = reader.result;
             // this.course.thumbnailImgFile = files[0];
-            this.course.thumbnailImgFile = reader.result;
+            // this.course.thumbnailImgFile = reader.result;
         };
         console.log(this.course);
         console.log(this.imgURL);
@@ -95,7 +95,7 @@ export class CourseBuilderComponent implements OnInit {
                     console.log(err);
                 }
             );
-        this._http.uploadThumbnail(this.cardImgFile)
+        this._http.updateThumbnail(this.cardImgFile, this.curID)
             .subscribe(
                 res => {
                     console.log('uploadThumbnail RES:', res);
@@ -111,6 +111,10 @@ export class CourseBuilderComponent implements OnInit {
         console.log(event);
         this.cardImgFile = <File>event.target.files[0];
         console.log(this.cardImgFile);
+
+        // this.course.thumbnailImgFile = new FormData();
+        // this.course.thumbnailImgFile.set('file', <File>event.target.files[0]);
+        // console.log(this.course);
     }
 
 }
