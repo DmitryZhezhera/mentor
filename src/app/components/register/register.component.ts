@@ -2,11 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth/auth.service';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {fadeStateTrigger} from '../../shared/animations/fade.animation';
 
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
-    styleUrls: ['./register.component.scss']
+    styleUrls: ['./register.component.scss'],
+    animations: [fadeStateTrigger]
 })
 export class RegisterComponent implements OnInit {
     userDataControl: FormGroup;

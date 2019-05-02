@@ -1,34 +1,48 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
+
+import {State, Store} from '@ngrx/store';
+import * as authActions from '../../store/actions/auth.actions';
+import {User} from '../../models/user';
+
+const {apiUrl} = environment;
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
+    user: User = {firstName: '', lastName: '', login: false};
 
-    // private _registerUrl = 'http://localhost:3000/api/register';
-    // private _registerUrl = 'https://test-mentor.herokuapp.com/add_user';
-    private _registerUrl = 'https://mentor-online-new.herokuapp.com/addUser';
-
-    // private _loginUrl = 'http://localhost:3000/api/login';
-    // private _loginUrl = 'https://test-mentor.herokuapp.com/find_user';
-    private _loginUrl = 'https://mentor-online-new.herokuapp.com/login';
-
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,
+                private _store: Store<User>,
+                private _state: State<User>) {
     }
 
     registerUser(user) {
         console.log('AuthService_ registerUser', user);
-        return this.http.post<any>(this._registerUrl, user);
+        return this.http.post<any>(`${apiUrl}/addUser`, user);
     }
 
     loginUser(user) {
         console.log('AuthService_ loginUser', user);
-        return this.http.post<any>(this._loginUrl, user);
+        return this.http.post<any>(`${apiUrl}/login`, user);
     }
 
     loggedIn() {
-        return !!localStorage.getItem('token');
+        if (this._state.getValue().authReducer.user.login) {
+            return true;
+        }
+        if (localStorage.getItem('token')) {
+            this.user.firstName = this._state.getValue().authReducer.user.firstName;
+            this.user.lastName = this._state.getValue().authReducer.user.lastName;
+            this.user.login = true;
+            // console.log('_state: ', this._state.getValue());
+            this._store.dispatch(new authActions.AuthLogIn(this.user));
+            return true;
+        }
+
+        return false;
     }
 
     token() {

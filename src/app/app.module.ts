@@ -18,6 +18,7 @@ import {MatProgressSpinnerModule, MatTabsModule} from '@angular/material';
 import {reducers} from './store/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {SharedModule} from './shared/shared.module';
+import {DropdownDirective} from './shared/directives/dropdown.directive';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import {SharedModule} from './shared/shared.module';
         LoginComponent,
         RegisterComponent,
         GuestComponent,
+        DropdownDirective
     ],
     imports: [
         BrowserModule,

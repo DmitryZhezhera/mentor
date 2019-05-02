@@ -52,3 +52,53 @@ header {
   font-size: 12px;
   transform: rotate(-90deg);
 }
+
+.nav-profile{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+
+  &__dropdown{
+    position: relative;
+    &.active{
+      .nav-profile__dropdown-menu{
+        display: flex;
+        flex-direction: column;
+        justify-content: right;
+      }
+    }
+
+  }
+  &__dropdown-toggle{
+    padding: 0 0 0 30px;
+    cursor: pointer;
+  }
+  &__dropdown-menu{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    text-align: right;
+    width: 150px;
+    background: #ff8a05;
+    border: 10px;
+    border: 1px solid white;
+  }
+
+  &__dropdown-item{
+    text-decoration: none;
+    color: white;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0 15px;
+    margin: 0;
+    border-bottom: 1px solid white;
+    z-index: 10;
+    &:hover{
+      background: #ff7105;
+    }
+  }
+}

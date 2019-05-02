@@ -1,39 +1,60 @@
-.course-builder{
-  &__title{
+.course-builder {
+  &__title {
     font-size: 30px;
     text-align: center;
   }
 
-  &__name{
-    width: 100%;
-    text-align: center;
-    font-size: 30px;
-    border: 1px solid grey;
-  }
-
-  &__description{
-    width: 100%;
-    min-height: 200px;
-    font-size: 30px;
-    padding: 10px;
-    border: 1px solid grey;
-  }
-
-  &__students{
+  &__students {
     list-style: none;
     padding: 0;
   }
 
-  &__student{
+  &__student {
     color: gray;
     padding: 10px 20px;
     font-size: 16px;
     background: #F8F8F8;
     border-bottom: 1px solid lightgray;
   }
+
+
+  &__settings {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__settings-vars {
+    flex-basis: 75%;
+    flex-grow: 1;
+    min-width: 280px;
+    padding-bottom: 50px;
+  }
+
+  &__settings-preview {
+    flex-basis: 20%;
+    min-width: 210px;
+    max-width: 300px;
+    padding: 20px 10px;
+  }
+
+  &__name {
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    border: 1px solid grey;
+  }
+
+  &__description {
+    width: 100%;
+    min-height: 200px;
+    font-size: 30px;
+    padding: 10px;
+    border: 1px solid grey;
+  }
 }
 
-mat-progress-spinner{
+mat-progress-spinner {
   margin: 100px auto;
 }
-

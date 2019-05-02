@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {Course} from '../../../models/course';
 import {TeacherCoursesService} from '../../../services/teacher-courses/teacher-courses.service';
-import {switchMap} from 'rxjs/operators';
-
 
 @Component({
     selector: 'app-course-builder',
@@ -18,7 +16,6 @@ export class CourseBuilderComponent implements OnInit {
     students: Object[] = null;
     showStudentsSpinner = true;
 
-    // public imagePath;
     imgURL: any;
     public message: string;
 
@@ -61,7 +58,7 @@ export class CourseBuilderComponent implements OnInit {
             );
     }
 
-    onChangePreview(files) {
+    onUpdateThumbnail(files) {
         if (files.length === 0) {
             return;
         }
@@ -73,15 +70,12 @@ export class CourseBuilderComponent implements OnInit {
         }
 
         const reader = new FileReader();
-        // this.imagePath = files;
+        this.cardImgFile = files[0];
         reader.readAsDataURL(files[0]);
         reader.onload = (_event) => {
             this.imgURL = reader.result;
-            // this.course.thumbnailImgFile = files[0];
-            // this.course.thumbnailImgFile = reader.result;
+            this.course.thumbnailImgUrl = this.imgURL;
         };
-        console.log(this.course);
-        console.log(this.imgURL);
     }
 
     updateCourse() {
@@ -95,26 +89,17 @@ export class CourseBuilderComponent implements OnInit {
                     console.log(err);
                 }
             );
-        this._http.updateThumbnail(this.cardImgFile, this.curID)
-            .subscribe(
-                res => {
-                    console.log('uploadThumbnail RES:', res);
-                },
-                err => {
-                    console.log(err);
-                }
-            );
+        if (this.cardImgFile) {
+            this._http.updateThumbnail(this.cardImgFile, this.curID)
+                .subscribe(
+                    res => {
+                        console.log('uploadThumbnail RES:', res);
+                    },
+                    err => {
+                        console.log(err);
+                    }
+                );
+        }
+
     }
-
-    // TEST
-    onFileSelected(event) {
-        console.log(event);
-        this.cardImgFile = <File>event.target.files[0];
-        console.log(this.cardImgFile);
-
-        // this.course.thumbnailImgFile = new FormData();
-        // this.course.thumbnailImgFile.set('file', <File>event.target.files[0]);
-        // console.log(this.course);
-    }
-
 }

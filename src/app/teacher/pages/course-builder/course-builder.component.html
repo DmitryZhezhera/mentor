@@ -12,7 +12,7 @@
                 <div *ngIf="!showStudentsSpinner ;  else spinner">
                     <ul *ngIf="students.length>0; else noStudents" class="course-builder__students">
                         <li *ngFor="let student of students; index as i" class="course-builder__student">
-                            <span>{{i + 1 +'. ' + student.firstName + ' ' + student.lastName}}</span>
+                            <span>{{i + 1 + '. ' + student.firstName + ' ' + student.lastName}}</span>
                         </li>
                     </ul>
                     <ng-template #noStudents>
@@ -23,22 +23,24 @@
             </mat-tab>
             <mat-tab label="CONTENT">Content OF THE COURSE</mat-tab>
             <mat-tab label="SETTINGS">
-                <p>COURSE NAME:</p>
-                <input class="course-builder__name" [(ngModel)]="course.name" name="name" type="text" required="required">
-                <!--<input class="course-builder__description" [(ngModel)]="course.description" name="name" type="text" required="required">-->
-                <p>COURSE DESCRIPTION:</p>
-                <textarea class="course-builder__description" [(ngModel)]="course.description" placeholder="PLEASE WRITE COURSE DESCRIPTION"></textarea>
+                <div class="course-builder__settings">
+                    <div class="course-builder__settings-vars">
+                        <p>COURSE NAME:</p>
+                        <input class="course-builder__name" [(ngModel)]="course.name" name="name" type="text" required="required">
+                        <!--<input class="course-builder__description" [(ngModel)]="course.description" name="name" type="text" required="required">-->
+                        <p>COURSE DESCRIPTION:</p>
+                        <textarea class="course-builder__description" [(ngModel)]="course.description" placeholder="PLEASE WRITE COURSE DESCRIPTION"></textarea>
 
-                <!--<img [src]="cardImgFile" alt="card image">-->
+                        <!--<img [src]="cardImgFile" alt="card image">-->
 
-                <p>CARD PREVIEW IMAGE:</p>
-                <!--<span style="color:red;" *ngIf="message">{{message}}</span>-->
-                <!--<img [src]="imgURL" height="200" *ngIf="imgURL">-->
-                <!--<input #previewImg type="file" accept='image/*' (change)="onChangePreview(previewImg.files)"/>-->
-
-                <input type="file" accept='image/*' (change)="onFileSelected($event)">
-
-
+                        <p>CARD THUMBNAIL IMAGE:</p>
+                        <!--<span style="color:red;" *ngIf="message">{{message}}</span>-->
+                        <input #thumbnailImg type="file" accept='image/*' (change)="onUpdateThumbnail(thumbnailImg.files)"/>
+                    </div>
+                    <div class="course-builder__settings-preview">
+                        <app-course-card [course]="course"></app-course-card>
+                    </div>
+                </div>
             </mat-tab>
         </mat-tab-group>
     </div>

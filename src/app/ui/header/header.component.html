@@ -1,22 +1,36 @@
 <header>
-  <div class="container">
-    <div class="content">
-      <a class="logo-link" routerLink="/"><h1 class="logo">mentor <span class="logo-online">online</span></h1></a>
-      <div class="auth">
-        <div *ngIf="!(store$ | async).user.login; else userMenu">
-          <span>Hello guest</span>
-          <a class="auth-btn" routerLink="login" routerLinkActive="active">Login</a>
-          <a class="auth-btn" routerLink="register" routerLinkActive="active">Register</a>
+    <div class="container">
+        <div class="content">
+            <a class="logo-link" routerLink="/"><h1 class="logo">mentor <span class="logo-online">online</span></h1></a>
+            <div class="auth">
+                <div *ngIf="!(store$ | async).user.login; else userMenu">
+                    <a class="auth-btn" routerLink="login" routerLinkActive="active">Login</a>
+                    <a class="auth-btn" routerLink="register" routerLinkActive="active">Register</a>
+                    <span>guest</span>
+                </div>
+
+                <ng-template #userMenu>
+                    <ul class="nav-profile">
+                        <li>
+                            <a class="auth-btn" routerLink="student" routerLinkActive="active">Student</a>
+                        </li>
+                        <li>
+                            <a class="auth-btn" routerLink="teacher" routerLinkActive="active">Teacher</a>
+                        </li>
+                        <li class="nav-profile__dropdown active" appDropdown>
+                            <div class="nav-profile__dropdown-toggle">
+                                <span>{{(store$ | async).user.firstName + " " + (store$ | async).user.lastName }}</span>
+                            </div>
+                            <div class="nav-profile__dropdown-menu">
+                                <a class="nav-profile__dropdown-item" href="#">Profile</a>
+                                <a class="nav-profile__dropdown-item" href="#">Messages</a>
+                                <a class="nav-profile__dropdown-item" (click)="logOut()" role="button">Log Out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </ng-template>
+
+            </div>
         </div>
-        <ng-template #userMenu>
-          <div class="">
-            <a class="auth-btn" routerLink="student" routerLinkActive="active">Student</a>
-            <a class="auth-btn" routerLink="teacher" routerLinkActive="active">Teacher</a>
-            <span> Hello {{(store$ | async).user.firstName}}</span>
-            <button class="auth-btn" (click)="logOut()">Log Out</button>
-          </div>
-        </ng-template>
-      </div>
     </div>
-  </div>
 </header>
