@@ -9,6 +9,7 @@ import {RouterModule} from '@angular/router';
     declarations: [
         CourseCardComponent,
         CoursePreviewComponent,
+        // DropdownDirective
     ],
     imports: [
         CommonModule,

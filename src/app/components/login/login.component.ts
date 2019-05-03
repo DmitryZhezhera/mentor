@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
     loginUserData = {login: '', password: ''};
     user: User = {firstName: 'guest', lastName: 'guest', login: false};
+    failed: boolean;
 
     // @HostBinding('@fade') animate = true;
     constructor(private _auth: AuthService,
@@ -45,7 +46,12 @@ export class LoginComponent implements OnInit {
                     this._store.dispatch(new authActions.AuthLogIn(this.user));
                     this._router.navigate(['student']);
                 },
-                err => console.log(err)
+                err => {
+                    console.log(err);
+                    if (err.error === 'Not Found') {
+                        this.failed = true;
+                    }
+                }
             );
     }
 }

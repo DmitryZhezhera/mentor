@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Course} from '../../../models/course';
 import {TeacherCoursesService} from '../../../services/teacher-courses/teacher-courses.service';
@@ -8,13 +8,14 @@ import {TeacherCoursesService} from '../../../services/teacher-courses/teacher-c
     templateUrl: './course-builder.component.html',
     styleUrls: ['./course-builder.component.scss']
 })
-export class CourseBuilderComponent implements OnInit {
+export class CourseBuilderComponent implements OnInit, OnChanges {
     showSpinner = true;
     course: Course;
     curID: string;
 
     students: Object[] = null;
     showStudentsSpinner = true;
+    unsaved = false;
 
     imgURL: any;
     public message: string;
@@ -56,6 +57,12 @@ export class CourseBuilderComponent implements OnInit {
                     this.showStudentsSpinner = false;
                 }
             );
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        this.unsaved = true;
+        console.log('ngOnChanges', changes);
+        // TODO DONT WORK ????
     }
 
     onUpdateThumbnail(files) {

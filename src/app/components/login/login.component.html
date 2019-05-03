@@ -6,6 +6,7 @@
       <input [(ngModel)]="loginUserData.login" name="login" type="text" required="required">
       Password
       <input [(ngModel)]="loginUserData.password" name="password" type="password" required="required">
+      <h3 class="registration__form-failed" *ngIf="failed">USER OR PASSWORD IS INCORRECT !!!</h3>
       <div class="registration-btn-wrap">
         <button (click)="cancel()" class="registration-btn">Cancel</button>
         <button (click)="loginUser()" class="registration-btn">Login</button>
