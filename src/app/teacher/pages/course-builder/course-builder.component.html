@@ -18,33 +18,31 @@
                     <ng-template #noStudents>
                         <p>YOU HAVE NO STUDENTS YET.</p>
                     </ng-template>
-
                 </div>
             </mat-tab>
-            <mat-tab label="CONTENT">
-                <ul *ngIf="course.arrVideo">
-                    <li *ngFor="let lesson of course.arrVideo">
-                        <p>{{lesson.name+" "+lesson.id}} </p>
+
+            <mat-tab label="LESSONS">
+                <ul class="course-builder__lessons" *ngIf="course.arrVideo">
+                    <li class="course-builder__lesson" *ngFor="let lesson of course.arrVideo; index as i">
+                        {{i + 1 + '. ' + lesson?.name + " " + lesson.id}}
                     </li>
                 </ul>
+                <h3>ADD NEW LESSON:</h3>
                 <div class="course-builder__uploadLesson-wrap">
-                    <input #upLoadLesson type="file" accept='video/*' (change)="onUpLoadLesson(upLoadLesson.files)"/>
-                    <span *ngIf="uploadLessonProgress.uploading">Uploaded: {{uploadLessonProgress.progress}}</span>
+                    <input [(ngModel)]="newLesson.name" class="course-builder__uploadLesson-theme" type="text" placeholder="lesson theme">
+                    <input class="course-builder__uploadLesson-file" #upLoadLesson type="file" accept='video/*' (change)="onChangeLessonFile(upLoadLesson.files)"/>
+                    <span class="course-builder__uploadLesson-uploading" *ngIf="newLesson.uploading">Uploaded: {{newLesson.progress}}</span>
+                    <button class="my-btn" (click)="onUpLoadLesson()">UPLOAD VIDEO</button>
                 </div>
-
-
             </mat-tab>
+
             <mat-tab label="SETTINGS">
                 <div class="course-builder__settings">
                     <div class="course-builder__settings-vars">
                         <p>COURSE NAME:</p>
                         <input class="course-builder__name" [(ngModel)]="course.name" name="name" type="text" required="required">
-                        <!--<input class="course-builder__description" [(ngModel)]="course.description" name="name" type="text" required="required">-->
                         <p>COURSE DESCRIPTION:</p>
                         <textarea class="course-builder__description" [(ngModel)]="course.description" placeholder="PLEASE WRITE COURSE DESCRIPTION"></textarea>
-
-                        <!--<img [src]="cardImgFile" alt="card image">-->
-
                         <p>CARD THUMBNAIL IMAGE:</p>
                         <!--<span style="color:red;" *ngIf="message">{{message}}</span>-->
                         <input #thumbnailImg type="file" accept='image/*' (change)="onUpdateThumbnail(thumbnailImg.files)"/>

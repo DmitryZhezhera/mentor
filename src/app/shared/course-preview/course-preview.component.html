@@ -19,14 +19,10 @@
         <h2 class="course__title">Lessons:</h2>
         <ol>
             <li class="course__video-list-item" *ngFor="let video of course.arrVideo; let i = index" [attr.index]="i" (click)="onLessonClick(video.id)">
-                <!--{{video.name}}-->lesson
+                {{video?.name}}
             </li>
             <!--TODO ASK ABOUT HOW CAN I READ ATTR values ???-->
         </ol>
-
-        <!--<ol>-->
-            <!--<a *ngFor="let video of course.arrVideo; let i = index" href="{{video.link}}"></a>-->
-        <!--</ol>-->
     </ng-container>
 
 </div>

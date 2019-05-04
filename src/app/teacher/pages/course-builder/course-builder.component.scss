@@ -16,8 +16,41 @@
     background: #F8F8F8;
     border-bottom: 1px solid lightgray;
   }
+  //LESSONS
+  &__lessons{
+    list-style: none;
+    padding: 0;
+  }
 
+  &__lesson{
+    color: gray;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #F8F8F8;
+    border-bottom: 1px solid lightgray;
+  }
 
+  &__uploadLesson-wrap{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 50px;
+  }
+
+  &__uploadLesson-theme{
+    min-width: 280px;
+    flex-basis: 50%;
+    height: 40px;
+    padding: 0 15px;
+    border: 1px solid lightgray;
+  }
+
+  &__uploadLesson-uploading{
+    padding: 0 5px;
+  }
+
+  //SETTINGS
   &__settings {
     display: flex;
     flex-wrap: wrap;

@@ -23,15 +23,16 @@ export class CourseBuilderComponent implements OnInit, OnChanges {
     public message: string;
 
     cardImgFile: File;
-    newLessonVideo: File;
-    uploadLessonProgress = {
+
+    newLesson = {
         uploading: false,
-        progress: '0%'
+        progress: '0%',
+        file: null,
+        name: ''
     };
 
     constructor(private _http: TeacherCoursesService,
                 private _activatedRoute: ActivatedRoute) {
-
     }
 
     ngOnInit() {
@@ -92,15 +93,22 @@ export class CourseBuilderComponent implements OnInit, OnChanges {
         };
     }
 
-    onUpLoadLesson(files) {
-        // console.log(files);
-        this.newLessonVideo = files[0];
-        this.uploadLessonProgress.uploading = true;
-        this.uploadLessonProgress.progress = '0%';
-        this._http.addVideoLesson(this.newLessonVideo, this.curID)
+    onChangeLessonFile(files) {
+        this.newLesson.file = files[0];
+    }
+
+    onUpLoadLesson() {
+        const fd = new FormData();
+        fd.set('file', this.newLesson.file);
+        fd.set('name', this.newLesson.name);
+
+        this.newLesson.uploading = true;
+        this.newLesson.progress = '0%';
+        console.log('onUpLoadLesson formData:', fd);
+        this._http.uploadVideoLesson(fd, this.curID)
             .subscribe(event => {
                     if (event.type === HttpEventType.UploadProgress) {
-                        this.uploadLessonProgress.progress = +(event.loaded / event.total * 100).toFixed(2) + '%';
+                        this.newLesson.progress = +(event.loaded / event.total * 100).toFixed(2) + '%';
                     } else if (event.type === HttpEventType.Response) {
                         console.log(`Response_`, event);
                     }

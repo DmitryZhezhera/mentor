@@ -56,12 +56,12 @@ export class TeacherCoursesService {
         });
     }
 
-    addVideoLesson(file: File, id: string) {
-        const fd = new FormData();
-        fd.set('file', file);
-        console.log('fd: ', fd);
-        console.log('file: ', file);
-        return this._http.post<any>(`${apiUrl}/addUrlVideoCourse/${id}`, fd, {
+    uploadVideoLesson(formData: FormData, id: string) {
+        // const fd = new FormData();
+        // fd.set('file', file);
+        // console.log('fd: ', fd);
+        // console.log('file: ', file);
+        return this._http.post<any>(`${apiUrl}/addUrlVideoCourse/${id}`, formData, {
             reportProgress: true,
             observe: 'events'
         });
