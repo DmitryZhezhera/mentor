@@ -2,6 +2,8 @@ import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Course} from '../../../models/course';
 import {TeacherCoursesService} from '../../../services/teacher-courses/teacher-courses.service';
+import {HttpEventType} from '@angular/common/http';
+
 
 @Component({
     selector: 'app-course-builder',
@@ -21,6 +23,11 @@ export class CourseBuilderComponent implements OnInit, OnChanges {
     public message: string;
 
     cardImgFile: File;
+    newLessonVideo: File;
+    uploadLessonProgress = {
+        uploading: false,
+        progress: '0%'
+    };
 
     constructor(private _http: TeacherCoursesService,
                 private _activatedRoute: ActivatedRoute) {
@@ -85,6 +92,22 @@ export class CourseBuilderComponent implements OnInit, OnChanges {
         };
     }
 
+    onUpLoadLesson(files) {
+        // console.log(files);
+        this.newLessonVideo = files[0];
+        this.uploadLessonProgress.uploading = true;
+        this.uploadLessonProgress.progress = '0%';
+        this._http.addVideoLesson(this.newLessonVideo, this.curID)
+            .subscribe(event => {
+                    if (event.type === HttpEventType.UploadProgress) {
+                        this.uploadLessonProgress.progress = +(event.loaded / event.total * 100).toFixed(2) + '%';
+                    } else if (event.type === HttpEventType.Response) {
+                        console.log(`Response_`, event);
+                    }
+                }
+            );
+    }
+
     updateCourse() {
         console.log(this.course);
         this._http.updateCourse(this.course)
@@ -96,14 +119,26 @@ export class CourseBuilderComponent implements OnInit, OnChanges {
                     console.log(err);
                 }
             );
+        // if (this.cardImgFile) {
+        //     this._http.updateThumbnail(this.cardImgFile, this.curID)
+        //         .subscribe(
+        //             res => {
+        //                 console.log('uploadThumbnail RES:', res);
+        //             },
+        //             err => {
+        //                 console.log(err);
+        //             }
+        //         );
+        // }
         if (this.cardImgFile) {
             this._http.updateThumbnail(this.cardImgFile, this.curID)
-                .subscribe(
-                    res => {
-                        console.log('uploadThumbnail RES:', res);
-                    },
-                    err => {
-                        console.log(err);
+                .subscribe(event => {
+                        console.log('updateThumbnail SUBSCRIBE event: ', event.type);
+                        if (event.type === HttpEventType.UploadProgress) {
+                            console.log('updateThumbnail Uploading...');
+                        } else if (event.type === HttpEventType.Response) {
+                            console.log(`updateThumbnail Response_`, event);
+                        }
                     }
                 );
         }

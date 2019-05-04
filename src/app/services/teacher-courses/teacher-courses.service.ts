@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {getBodyNode} from '@angular/animations/browser/src/render/shared';
 import {environment} from '../../../environments/environment';
+import {Observable} from 'rxjs';
 
 const {apiUrl} = environment;
 
@@ -49,7 +50,20 @@ export class TeacherCoursesService {
         fd.set('file', file);
         console.log('fd: ', fd);
         console.log('file: ', file);
-        return this._http.post<any>(`${apiUrl}/updateThumbnail/${id}`, fd);
+        return this._http.post<any>(`${apiUrl}/updateThumbnail/${id}`, fd, {
+            reportProgress: true,
+            observe: 'events'
+        });
     }
 
+    addVideoLesson(file: File, id: string) {
+        const fd = new FormData();
+        fd.set('file', file);
+        console.log('fd: ', fd);
+        console.log('file: ', file);
+        return this._http.post<any>(`${apiUrl}/addUrlVideoCourse/${id}`, fd, {
+            reportProgress: true,
+            observe: 'events'
+        });
+    }
 }

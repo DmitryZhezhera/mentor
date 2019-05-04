@@ -21,7 +21,19 @@
 
                 </div>
             </mat-tab>
-            <mat-tab label="CONTENT">Content OF THE COURSE</mat-tab>
+            <mat-tab label="CONTENT">
+                <ul *ngIf="course.arrVideo">
+                    <li *ngFor="let lesson of course.arrVideo">
+                        <p>{{lesson.name+" "+lesson.id}} </p>
+                    </li>
+                </ul>
+                <div class="course-builder__uploadLesson-wrap">
+                    <input #upLoadLesson type="file" accept='video/*' (change)="onUpLoadLesson(upLoadLesson.files)"/>
+                    <span *ngIf="uploadLessonProgress.uploading">Uploaded: {{uploadLessonProgress.progress}}</span>
+                </div>
+
+
+            </mat-tab>
             <mat-tab label="SETTINGS">
                 <div class="course-builder__settings">
                     <div class="course-builder__settings-vars">

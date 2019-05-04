@@ -29,7 +29,7 @@ export class CoursePreviewComponent implements OnInit {
             .subscribe(
                 res => {
                     this.course = res.message;
-                    this.course.arrVideo = VIDEO_LINKS;
+                    // this.course.arrVideo = res.videos;
                     this.currentLesson = this.course.arrVideo[0];
                     this.trustedLessonUrl = this._sanitizer.bypassSecurityTrustResourceUrl(this.currentLesson.link);
                     console.log('RES:', res);
@@ -58,8 +58,15 @@ export class CoursePreviewComponent implements OnInit {
     }
 
     onLessonClick(id) {
-        this.currentLesson = this.course.arrVideo[id];
-        this.trustedLessonUrl = this._sanitizer.bypassSecurityTrustResourceUrl(this.currentLesson.link);
-        // console.log(this.currentLesson);
+        if (this.course.arrVideo) {
+            for (let i = 0; i < this.course.arrVideo.length; i++) {
+                if (id === this.course.arrVideo[i].id) {
+                    this.currentLesson = this.course.arrVideo[i];
+                    this.trustedLessonUrl = this._sanitizer.bypassSecurityTrustResourceUrl(this.currentLesson.link);
+                    break;
+                }
+            }
+            console.log('NEW currentLesson is ', this.currentLesson);
+        }
     }
 }

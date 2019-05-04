@@ -7,18 +7,26 @@
     <p class="course__description">{{course?.description}}</p>
     <button class="my-btn" (click)="onSubscribe()">SUBSCRIBE</button>
     <ng-container *ngIf="course?.arrVideo.length">
-        <h2 class="course__title">Lesson: {{currentLesson.name}}</h2>
+        <h2 class="course__title">Lesson: {{currentLesson?.name}}</h2>
         <div class="course__video-wrap">
+            <!--YOUTUBE-->
             <!--<iframe class="course__video" src="https://www.youtube.com/embed/Cyt0ViDtJ_w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
-            <iframe class="course__video" [src]="trustedLessonUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <!--<iframe class="course__video" [src]="trustedLessonUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+
+            <!--s3-->
+            <video class="course__video" controls="" autoplay="" name="media" [src]="trustedLessonUrl"></video>
         </div>
         <h2 class="course__title">Lessons:</h2>
         <ol>
             <li class="course__video-list-item" *ngFor="let video of course.arrVideo; let i = index" [attr.index]="i" (click)="onLessonClick(video.id)">
-                {{video.name}}
+                <!--{{video.name}}-->lesson
             </li>
             <!--TODO ASK ABOUT HOW CAN I READ ATTR values ???-->
         </ol>
+
+        <!--<ol>-->
+            <!--<a *ngFor="let video of course.arrVideo; let i = index" href="{{video.link}}"></a>-->
+        <!--</ol>-->
     </ng-container>
 
 </div>
