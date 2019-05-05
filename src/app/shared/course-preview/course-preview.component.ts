@@ -31,7 +31,9 @@ export class CoursePreviewComponent implements OnInit {
                     this.course = res.message;
                     // this.course.arrVideo = res.videos;
                     this.currentLesson = this.course.arrVideo[0];
-                    this.trustedLessonUrl = this._sanitizer.bypassSecurityTrustResourceUrl(this.currentLesson.link);
+                    if (this.currentLesson) {
+                        this.trustedLessonUrl = this._sanitizer.bypassSecurityTrustResourceUrl(this.currentLesson.link);
+                    }
                     console.log('RES:', res);
                     console.log('this.course:', this.course);
                     console.log('this.currentLesson_', this.currentLesson);
