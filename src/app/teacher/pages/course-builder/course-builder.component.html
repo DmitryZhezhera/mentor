@@ -24,12 +24,18 @@
             <mat-tab label="LESSONS">
                 <ul class="course-builder__lessons" *ngIf="course.arrVideo">
                     <li class="course-builder__lesson" *ngFor="let lesson of course.arrVideo; index as i">
-                        {{i + 1 + '. ' + lesson?.name + " " + lesson.id}}
+                        {{i + 1 + '. ' + lesson?.name}}
+                        <label>
+                            <input type="checkbox" [checked]="+lesson.public" disabled> Public
+                        </label>
                     </li>
                 </ul>
                 <h3>ADD NEW LESSON:</h3>
                 <div class="course-builder__uploadLesson-wrap">
                     <input [(ngModel)]="newLesson.name" class="course-builder__uploadLesson-theme" type="text" placeholder="lesson theme">
+                    <label>
+                        <input #checkbox type="checkbox" (click)="onPublicClick(checkbox)"> Public
+                    </label>
                     <input class="course-builder__uploadLesson-file" #upLoadLesson type="file" accept='video/*' (change)="onChangeLessonFile(upLoadLesson.files)"/>
                     <span class="course-builder__uploadLesson-uploading" *ngIf="newLesson.uploading">Uploaded: {{newLesson.progress}}</span>
                     <button class="my-btn" (click)="onUpLoadLesson()">UPLOAD VIDEO</button>

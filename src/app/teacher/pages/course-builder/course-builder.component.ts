@@ -28,7 +28,8 @@ export class CourseBuilderComponent implements OnInit, OnChanges {
         uploading: false,
         progress: '0%',
         file: null,
-        name: ''
+        name: '',
+        public: false
     };
 
     constructor(private _http: TeacherCoursesService,
@@ -101,6 +102,7 @@ export class CourseBuilderComponent implements OnInit, OnChanges {
         const fd = new FormData();
         fd.set('file', this.newLesson.file);
         fd.set('name', this.newLesson.name);
+        fd.set('public', this.newLesson.public + '');
 
         this.newLesson.uploading = true;
         this.newLesson.progress = '0%';
@@ -114,6 +116,12 @@ export class CourseBuilderComponent implements OnInit, OnChanges {
                     }
                 }
             );
+    }
+
+    onPublicClick(element) {
+        this.newLesson.public = element.checked;
+        console.log(element);
+        console.log(this.newLesson);
     }
 
     updateCourse() {

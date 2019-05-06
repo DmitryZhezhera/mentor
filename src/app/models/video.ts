@@ -3,5 +3,5 @@ export class VIDEO {
     index: number;
     link: string;
     name: string;
-    private: boolean;
+    public: boolean;
 }

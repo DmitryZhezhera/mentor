@@ -20,6 +20,7 @@
   &__lessons{
     list-style: none;
     padding: 0;
+
   }
 
   &__lesson{
@@ -28,6 +29,8 @@
     font-size: 16px;
     background: #F8F8F8;
     border-bottom: 1px solid lightgray;
+    display: flex;
+    justify-content: space-between;
   }
 
   &__uploadLesson-wrap{

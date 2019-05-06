@@ -14,12 +14,17 @@
             <!--<iframe class="course__video" [src]="trustedLessonUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
 
             <!--s3-->
-            <video class="course__video" controls="" autoplay="" name="media" [src]="trustedLessonUrl"></video>
+            <video class="course__video" controls="" autoplay="false" name="media" [src]="trustedLessonUrl"></video>
         </div>
         <h2 class="course__title">Lessons:</h2>
-        <ol>
-            <li class="course__video-list-item" *ngFor="let video of course.arrVideo; let i = index" [attr.index]="i" (click)="onLessonClick(video.id)">
-                {{video?.name}}
+        <ol class="course__lessons">
+            <li class="course__lesson-wrap" *ngFor="let video of course.arrVideo; let i = index" [attr.index]="i">
+                <p class="course__lesson course__lesson--active" *ngIf="video.link!='error'" (click)="onLessonClick(video.id)">
+                    {{i + 1 + '. ' + video?.name}}
+                </p>
+                <p class="course__lesson course__lesson--disabled" *ngIf="video.link==='error'">
+                    {{i + 1 + '. ' + video?.name}}
+                </p>
             </li>
             <!--TODO ASK ABOUT HOW CAN I READ ATTR values ???-->
         </ol>

@@ -29,4 +29,28 @@
       color: black;
     }
   }
+
+  &__lessons{
+    list-style: none;
+    padding: 0;
+  }
+
+  &__lesson{
+    color: gray;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #F8F8F8;
+    border-bottom: 1px solid lightgray;
+    margin: 0 0 1px;
+    &--active{
+      cursor: pointer;
+      &:hover{
+        color: black;
+        background: #d0d0d0;
+      }
+    }
+    &--disabled{
+      opacity: 0.5;
+    }
+  }
 }
