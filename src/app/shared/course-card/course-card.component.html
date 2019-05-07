@@ -1,5 +1,5 @@
 <div class="course-card">
-    <a class="course-card__link" routerLink="{{link}}">
+    <a class="course-card__link course-card__rotate" routerLink="{{link}}">
         <div class="course-card__body">
             <div class="course-card__head">
                 <img class="course-card__head-img" *ngIf="course.thumbnailImgUrl" [src]="course.thumbnailImgUrl" alt="preview">
@@ -28,15 +28,14 @@
                 </p>
             </div>
         </div>
-    </a>
+        <div class="course-card-modal">
+            <h3 class="course-card-modal__title">{{course.name}}</h3>
+            <p class="course-card-modal__category">{{course.category}}</p>
+            <p class="course-card-modal__description">{{course.description}}</p>
 
-    <div class="course-card-modal">
-        <h3 class="course-card-modal__title">{{course.name}}</h3>
-        <p class="course-card-modal__category">{{course.category}}</p>
-        <p class="course-card-modal__description">{{course.description}}</p>
-
-        <!--<div class="course-card-modal__foot">-->
+            <!--<div class="course-card-modal__foot">-->
             <!--<button (click)="onSubscribe()">Subscribe</button>-->
-        <!--</div>-->
-    </div>
+            <!--</div>-->
+        </div>
+    </a>
 </div>

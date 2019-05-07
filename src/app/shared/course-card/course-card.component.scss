@@ -1,5 +1,18 @@
+
 .course-card {
-  position: relative;
+
+  perspective: 1000px;
+
+
+  &__link {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 700ms;
+  }
 
   &:hover {
     transform: scale(1.1);
@@ -7,15 +20,18 @@
     box-shadow: 0 0 3px 3px rgba(20, 23, 28, 0.2), 0 5px 5px 0 rgba(20, 23, 28, 0.2);
     transition: 700ms;
 
+    .course-card__body{
+      transform: rotateY(180deg);
+    }
+
     .course-card-modal {
       visibility: visible;
-      transition: 700ms;
+      //animation-delay: 250ms;
+      transition: 500ms;
     }
   }
 
-  &__link {
-    text-decoration: none;
-  }
+
 
   &__body {
     display: flex;
@@ -24,6 +40,7 @@
     vertical-align: top;
     height: 335px;
     box-shadow: 0 0 1px 1px rgba(20, 23, 28, 0.1), 0 3px 1px 0 rgba(20, 23, 28, 0.1);
+    backface-visibility: hidden;
   }
 
   &__head {
@@ -97,17 +114,21 @@
 
 .course-card-modal {
   visibility: hidden;
+  backface-visibility: hidden;
   position: absolute;
-  transition: 300ms;
+  //transition: 300ms;
   //display: flex;
   //flex-direction: column;
   //justify-content: space-between;
-  width: 140%;
-  height: 140%;
+  //width: 140%;
+  //height: 140%
+   width: 100%;
+  height: 100%;
+  overflow: hidden;
   background: white;
-  left: 105%;
-  bottom: -20%;
-  z-index: 100;
+  left: 0%;
+  bottom: 0;
+  //z-index: 100;
   box-shadow: 0 0 3px 3px rgba(20, 23, 28, 0.2), 0 5px 5px 0 rgba(20, 23, 28, 0.2);
   padding: 20px;
   border-radius: 5px;
@@ -118,6 +139,7 @@
     font-weight: bold;
     margin: 0;
     padding-bottom: 15px;
+    color: black;
   }
 
   &__category {
@@ -134,9 +156,9 @@
     padding-bottom: 10px;
   }
 }
-
-@media (max-width: 600px) {
-  .course-card-modal {
-    display: none;
-  }
-}
+//
+//@media (max-width: 600px) {
+//  .course-card-modal {
+//    display: none;
+//  }
+//}
