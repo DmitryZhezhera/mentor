@@ -3,6 +3,7 @@ import {Course} from '../models/course';
 export const COURSES: Course[] = [
     {
         id: '1',
+        category: 'programming',
         thumbnailImgUrl: 'url1',
         name: 'course1',
         teacher: 'teacher1',
@@ -15,6 +16,7 @@ export const COURSES: Course[] = [
     },
     {
         id: '2',
+        category: 'programming',
         thumbnailImgUrl: 'url2',
         name: 'course2',
         teacher: 'teacher1',
@@ -27,6 +29,7 @@ export const COURSES: Course[] = [
     },
     {
         id: '3',
+        category: 'programming',
         thumbnailImgUrl: 'url3',
         name: 'course3',
         teacher: 'teacher3',

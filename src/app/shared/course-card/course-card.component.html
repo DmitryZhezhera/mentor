@@ -15,6 +15,7 @@
                     <span class="course-card__rating-votes">({{course.ratingVotes}})</span>
 
                 </p>
+
                 <p class="course-card__prices" *ngIf="course.priceDiscount>0">
                     <span class="course-card__priceOld">{{course.price}} $</span>
                     <span class="course-card__price">{{course.priceDiscount}} $</span>
@@ -22,13 +23,17 @@
                 <p class="course-card__prices" *ngIf="course.priceDiscount==0">
                     <span class="course-card__price">{{course.price}} $</span>
                 </p>
+                <p class="course-card__prices" *ngIf="!course.priceDiscount && !course.price ">
+                    <span class="course-card__price">its Free !!!</span>
+                </p>
             </div>
         </div>
     </a>
 
     <div class="course-card-modal">
-        <h3 class="course-card__title">{{course.name}}</h3>
-        <p>{{course.description}}</p>
+        <h3 class="course-card-modal__title">{{course.name}}</h3>
+        <p class="course-card-modal__category">{{course.category}}</p>
+        <p class="course-card-modal__description">{{course.description}}</p>
 
         <!--<div class="course-card-modal__foot">-->
             <!--<button (click)="onSubscribe()">Subscribe</button>-->

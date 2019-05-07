@@ -2,6 +2,7 @@ import {VIDEO} from './video';
 
 export class Course {
     name: string;
+    category: string;
     id: string;
     thumbnailImgUrl: string;
     teacher: string;

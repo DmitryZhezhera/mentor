@@ -9,6 +9,7 @@ import {HttpEventType} from '@angular/common/http';
     selector: 'app-course-builder',
     templateUrl: './course-builder.component.html',
     styleUrls: ['./course-builder.component.scss']
+
 })
 export class CourseBuilderComponent implements OnInit, OnChanges {
     showSpinner = true;

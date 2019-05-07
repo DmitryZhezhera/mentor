@@ -1,7 +1,7 @@
 <div class="container">
     <app-create-course></app-create-course>
 
-    <div class="" *ngIf="showSpinner===false; else spinner">
+    <div @slideInBottom @fade class="" *ngIf="showSpinner===false; else spinner">
         <div class="teacher-courses" *ngIf="arrMyCourses.length>0; else noCourses">
             <h2 class="teacher-courses__title">ВАШИ КУРСЫ:</h2>
             <ul class="courses__list">

@@ -2,12 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {Course} from '../../../models/course';
 // import {COURSES} from '../../../mocks/mock-courses';
 import {TeacherCoursesService} from '../../../services/teacher-courses/teacher-courses.service';
+import {slideInBotomStateTrigger} from '../../../shared/animations/slideInBottom.animation';
+import {fadeStateTrigger} from '../../../shared/animations/fade.animation';
 
 
 @Component({
     selector: 'app-teacher',
     templateUrl: './teacher.component.html',
-    styleUrls: ['./teacher.component.scss']
+    styleUrls: ['./teacher.component.scss'],
+    animations: [slideInBotomStateTrigger, fadeStateTrigger]
 })
 export class TeacherComponent implements OnInit {
     arrMyCourses: Course[] = [];

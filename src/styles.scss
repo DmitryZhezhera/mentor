@@ -25,3 +25,9 @@ main{
   margin: 0 auto;
   padding: 15px;
 }
+
+.sub-nav-wrap{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}

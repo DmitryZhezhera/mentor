@@ -3,10 +3,15 @@ import {Course} from '../../../models/course';
 import {StudentService} from '../../../services/student/student.service';
 import {GuestService} from '../../../services/guest/guest.service';
 
+import {slideInRightStateTrigger} from '../../../shared/animations/slideInRight.animation';
+import {slideInLeftStateTrigger} from '../../../shared/animations/slideInLeft.animation';
+import {fadeStateTrigger} from '../../../shared/animations/fade.animation';
+
 @Component({
     selector: 'app-student',
     templateUrl: './student.component.html',
-    styleUrls: ['./student.component.scss']
+    styleUrls: ['./student.component.scss'],
+    animations: [slideInRightStateTrigger, slideInLeftStateTrigger, fadeStateTrigger]
 })
 export class StudentComponent implements OnInit {
     arrSubscribedCourses: Course[] = [];

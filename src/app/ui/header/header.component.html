@@ -6,7 +6,7 @@
                 <div *ngIf="!(store$ | async).user.login; else userMenu">
                     <a class="auth-btn" routerLink="login" routerLinkActive="active">Login</a>
                     <a class="auth-btn" routerLink="register" routerLinkActive="active">Register</a>
-                    <span>guest</span>
+                    <span class="nav-profile__dropdown-toggle">Guest</span>
                 </div>
 
                 <ng-template #userMenu>
@@ -21,7 +21,7 @@
                             <div class="nav-profile__dropdown-toggle">
                                 <span>{{(store$ | async).user.firstName + " " + (store$ | async).user.lastName }}</span>
                             </div>
-                            <div class="nav-profile__dropdown-menu" @fade >
+                            <div @fade class="nav-profile__dropdown-menu"  >
                                 <a class="nav-profile__dropdown-item">Profile</a>
                                 <a class="nav-profile__dropdown-item">Messages</a>
                                 <a class="nav-profile__dropdown-item" (click)="logOut()" role="button">Log Out</a>

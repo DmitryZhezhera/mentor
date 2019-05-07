@@ -1,19 +1,25 @@
 .my-btn{
+  min-height: 34px;
   padding: 10px 30px;
   background: #ff8a05;
   border-radius: 5px;
   border: none;
   cursor: pointer;
   color: white;
+  text-decoration: none;
+  display: inline-block;
+  transition: 400ms;
   &:hover{
     background: #ff7105;
+    transform: scale(1.1);
+    transition: 700ms;
   }
 }
 
 .btn-back{
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   margin: 10px 0;
   padding: 0;
   text-decoration: none;
@@ -23,4 +29,8 @@
   &:hover{
     color: white;
   }
+}
+
+.btn--save{
+  margin: 10px;
 }

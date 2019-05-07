@@ -18,18 +18,5 @@
     font-weight: 300;
 
   }
-  &__btn{
-    color: #FFF;
-    background-color: #EC5252;
-    border: 1px solid transparent;
-    text-decoration: none;
-    min-width: 290px;
-    padding: 15px 30px;
-    display: inline-block;
-    transition: 700ms;
-    &:hover{
-      transition: 700ms;
-      background-color: #992337;
-    }
-  }
+
 }
